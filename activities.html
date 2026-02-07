@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Activities & Events - VitaNova International Alliance For Sciences</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="activities.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Montserrat:wght@700;800;900&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+</head>
+
+<body>
+
+    <!-- REUSED HEADER -->
+    <header class="header">
+        <div class="navbar">
+            <div class="menu-icon" onclick="openDrawer()">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <div class="logo-area animate__animated animate__fadeInLeft">
+                <div class="logo-image">
+                    <a href="index.html">
+                        <img src="https://lh3.googleusercontent.com/sitesv/APaQ0SR6Mmv4KYK034-X9GbJHFVY6swM0h_bwp3D952PlE7yithn6q5CbLnck1LifX6VNdZV_3sw4LS8HRG6lQf2NPyM8H0sDEaPsP4rpMU48oRQn9KU0p7gsuvRfetV0FA9n_PNB6rii55Qyf_o0yc2MNr7X6-LUBiifjg6cmMiLGdV2EM4dX2o7VTM=w16383"
+                            alt="VitaNova Logo" class="logo-img">
+                    </a>
+                </div>
+                <div class="logo-text">
+                    <h1 class="logo-title">VitaNova</h1>
+                    <p class="logo-subtitle">International Alliance For Sciences</p>
+                </div>
+            </div>
+
+            <nav class="menu animate__animated animate__fadeInRight">
+                <a href="index.html#home"><i class="fas fa-home"></i> HOME</a>
+                <a href="index.html#mission"><i class="fas fa-rocket"></i> MISSION</a>
+                <a href="collaboration.html"><i class="fas fa-handshake"></i> COLLABORATIONS</a>
+                <a href="index.html#career"><i class="fas fa-briefcase"></i> CAREER</a>
+                <a href="activities.html" class="active"><i class="fas fa-calendar-alt"></i> ACTIVITIES</a>
+                <a href="index.html#contact"><i class="fas fa-envelope"></i> CONTACT</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- DRAWER -->
+    <div id="drawer" class="drawer">
+        <div class="drawer-header">
+            <div class="drawer-logo">
+                <img src="https://lh3.googleusercontent.com/sitesv/APaQ0SR6Mmv4KYK034-X9GbJHFVY6swM0h_bwp3D952PlE7yithn6q5CbLnck1LifX6VNdZV_3sw4LS8HRG6lQf2NPyM8H0sDEaPsP4rpMU48oRQn9KU0p7gsuvRfetV0FA9n_PNB6rii55Qyf_o0yc2MNr7X6-LUBiifjg6cmMiLGdV2EM4dX2o7VTM=w16383"
+                    alt="VitaNova Logo" class="drawer-logo-img">
+                <span>VitaNova</span>
+            </div>
+            <span class="close-btn" onclick="closeDrawer()">×</span>
+        </div>
+        <div class="drawer-content">
+            <a href="index.html" onclick="closeDrawer()"><i class="fas fa-home"></i> HOME</a>
+            <a href="index.html#mission" onclick="closeDrawer()"><i class="fas fa-rocket"></i> MISSION</a>
+            <a href="collaboration.html" onclick="closeDrawer()"><i class="fas fa-handshake"></i> COLLABORATIONS</a>
+            <a href="index.html#career" onclick="closeDrawer()"><i class="fas fa-briefcase"></i> CAREER</a>
+            <a href="activities.html" onclick="closeDrawer()" class="active"><i class="fas fa-calendar-alt"></i>
+                ACTIVITIES</a>
+            <a href="index.html#contact" onclick="closeDrawer()"><i class="fas fa-envelope"></i> CONTACT</a>
+        </div>
+    </div>
+
+    <!-- PAGE HEADER -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="animate__animated animate__fadeInDown">Activities & Events</h1>
+            <p class="animate__animated animate__fadeInUp">Engaging the scientific community through workshops,
+                seminars,
+                and conferences</p>
+        </div>
+    </section>
+
+    <!-- ACTIVITIES GRID -->
+    <section class="activities-section">
+        <div class="container">
+            <div class="activities-grid">
+
+                <!-- [Symposium] AI in Medical Research -->
+                <div class="event-card">
+                    <div class="event-image">
+                        <img src="activities_images/ai_medical_symposium.png" alt="AI in Medical Research Symposium">
+                        <div class="event-date-badge">
+                            <span class="day">07</span>
+                            <span class="month">AUG</span>
+                        </div>
+                    </div>
+                    <div class="event-details">
+                        <span class="event-category">Symposium</span>
+                        <h3>AI in Medical Research</h3>
+                        <p>International Symposium on "How is AI Transforming in Medical Research: From Diagnosis to
+                            Drug Discovery".</p>
+                        <div class="event-meta">
+                            <span><i class="fas fa-clock"></i> Submission Deadline</span>
+                            <span><i class="fas fa-calendar-alt"></i> August 7, 2025</span>
+                        </div>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfocB-mt7-vHGxtrPSOSWA0TvRRfBzgdvq7JOD24G4ZZO91QQ/viewform"
+                            target="_blank" class="btn-event">Register Now <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- [Course] Molecular Biology -->
+                <div class="event-card">
+                    <div class="event-image">
+                        <img src="activities_images/molecular_biology_course.png" alt="Molecular Biology Course">
+                        <div class="event-date-badge">
+                            <span class="day">05</span>
+                            <span class="month">DEC</span>
+                        </div>
+                    </div>
+                    <div class="event-details">
+                        <span class="event-category">Online Course</span>
+                        <h3>Molecular Biology</h3>
+                        <p>Advancements in Molecular Biology: 4-week weekend course covering NGS, CRISPR, and
+                            Bioinformatics.</p>
+                        <div class="event-meta">
+                            <span><i class="fas fa-clock"></i> Weekend Classes</span>
+                            <span><i class="fas fa-hourglass-half"></i> 4 Weeks Duration</span>
+                        </div>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfocB-mt7-vHGxtrPSOSWA0TvRRfBzgdvq7JOD24G4ZZO91QQ/viewform"
+                            target="_blank" class="btn-event">Enroll Now <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- [Webinar] Bioinformatics -->
+                <div class="event-card">
+                    <div class="event-image">
+                        <img src="activities_images/bioinformatics_webinar.png" alt="Bioinformatics Webinar">
+                        <div class="event-date-badge">
+                            <span class="day-text">FREE</span>
+                        </div>
+                    </div>
+                    <div class="event-details">
+                        <span class="event-category">Webinar</span>
+                        <h3>Intro to Bioinformatics</h3>
+                        <p>Guest session by Dr. Saad Sarfraz: Exploring Bioinformatics - A Beginner's Window into Data
+                            and Biology.</p>
+                        <div class="event-meta">
+                            <span><i class="fas fa-user-tie"></i> Dr. Saad Sarfraz</span>
+                            <span><i class="fas fa-laptop"></i> Online Webinar</span>
+                        </div>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfocB-mt7-vHGxtrPSOSWA0TvRRfBzgdvq7JOD24G4ZZO91QQ/viewform"
+                            target="_blank" class="btn-event">Watch More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- [Webinar] Molecular Docking -->
+                <div class="event-card">
+                    <div class="event-image">
+                        <img src="activities_images/molecular_docking_webinar.png" alt="Molecular Docking Webinar">
+                        <div class="event-date-badge">
+                            <span class="day">19</span>
+                            <span class="month">APR</span>
+                        </div>
+                    </div>
+                    <div class="event-details">
+                        <span class="event-category">Webinar</span>
+                        <h3>Molecular Docking</h3>
+                        <p>Session on Molecular Docking in Drug Discovery Pipeline by Areeba Fatima and Laisha Razia.
+                        </p>
+                        <div class="event-meta">
+                            <span><i class="fas fa-user-tie"></i> Areeba & Laisha</span>
+                            <span><i class="fas fa-clock"></i> 7:00 PM PKT</span>
+                        </div>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfocB-mt7-vHGxtrPSOSWA0TvRRfBzgdvq7JOD24G4ZZO91QQ/viewform"
+                            target="_blank" class="btn-event">Join Now <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- [Internship] Summer Program -->
+                <div class="event-card">
+                    <div class="event-image">
+                        <img src="activities_images/summer_internship_2025.png" alt="Summer Internship 2025">
+                        <div class="event-date-badge">
+                            <span class="day">10</span>
+                            <span class="month">JUL</span>
+                        </div>
+                    </div>
+                    <div class="event-details">
+                        <span class="event-category">Program</span>
+                        <h3>Summer Internship 2025</h3>
+                        <p>6-week global internship program covering AI, Bioinformatics, Web Dev, and Graphic Design.
+                        </p>
+                        <div class="event-meta">
+                            <span><i class="fas fa-calendar-check"></i> Deadline: July 1</span>
+                            <span><i class="fas fa-globe"></i> Global Exposure</span>
+                        </div>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfocB-mt7-vHGxtrPSOSWA0TvRRfBzgdvq7JOD24G4ZZO91QQ/viewform"
+                            target="_blank" class="btn-event">Apply Now <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- [Scholarship] CSC China -->
+                <div class="event-card">
+                    <div class="event-image">
+                        <img src="activities_images/csc_scholarship_session.png" alt="CSC Scholarship Session">
+                        <div class="event-date-badge">
+                            <span class="day">26</span>
+                            <span class="month">NOV</span>
+                        </div>
+                    </div>
+                    <div class="event-details">
+                        <span class="event-category">Scholarship</span>
+                        <h3>CSC China Guidance</h3>
+                        <p>Expert guidance on Chinese Government Scholarship applications for MS Ecology and
+                            Environment.</p>
+                        <div class="event-meta">
+                            <span><i class="fas fa-user"></i> Abdul Hafeez</span>
+                            <span><i class="fas fa-video"></i> Via Zoom</span>
+                        </div>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfocB-mt7-vHGxtrPSOSWA0TvRRfBzgdvq7JOD24G4ZZO91QQ/viewform"
+                            target="_blank" class="btn-event">Join Session <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- [Scholarship] Türkiye Burslari -->
+                <div class="event-card">
+                    <div class="event-image">
+                        <img src="activities_images/turkiye_scholarship_session.png" alt="Türkiye Scholarship Session">
+                        <div class="event-date-badge">
+                            <span class="day">18</span>
+                            <span class="month">JAN</span>
+                        </div>
+                    </div>
+                    <div class="event-details">
+                        <span class="event-category">Scholarship</span>
+                        <h3>Türkiye Bursları Session</h3>
+                        <p>Fully-funded opportunity guidance for undergraduate, master's, and PhD programs in Turkey.
+                        </p>
+                        <div class="event-meta">
+                            <span><i class="fas fa-user"></i> Abdullah Shoukat</span>
+                            <span><i class="fas fa-video"></i> Via Zoom</span>
+                        </div>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfocB-mt7-vHGxtrPSOSWA0TvRRfBzgdvq7JOD24G4ZZO91QQ/viewform"
+                            target="_blank" class="btn-event">Join Session <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- [Scholarship] KNB Indonesia -->
+                <div class="event-card">
+                    <div class="event-image">
+                        <img src="activities_images/knb_scholarship_session.png" alt="KNB Scholarship Session">
+                        <div class="event-date-badge">
+                            <span class="day">02</span>
+                            <span class="month">FEB</span>
+                        </div>
+                    </div>
+                    <div class="event-details">
+                        <span class="event-category">Scholarship</span>
+                        <h3>KNB Indonesia Session</h3>
+                        <p>Guidance on KNB (Kemitraan Negara Berkembang) fully-funded scholarship for developing
+                            countries.</p>
+                        <div class="event-meta">
+                            <span><i class="fas fa-user"></i> Kashif Ali</span>
+                            <span><i class="fas fa-video"></i> Via Zoom</span>
+                        </div>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfocB-mt7-vHGxtrPSOSWA0TvRRfBzgdvq7JOD24G4ZZO91QQ/viewform"
+                            target="_blank" class="btn-event">Join Session <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- [Program] Ambassadorship -->
+                <div class="event-card">
+                    <div class="event-image">
+                        <img src="activities_images/ambassadorship_program.png" alt="Ambassadorship Program">
+                        <div class="event-date-badge">
+                            <span class="day-text">JOIN</span>
+                        </div>
+                    </div>
+                    <div class="event-details">
+                        <span class="event-category">Initiative</span>
+                        <h3>Global Ambassadorship</h3>
+                        <p>Empowering leaders and communities. Our ambassadors spread research and education nationwide.
+                        </p>
+                        <div class="event-meta">
+                            <span><i class="fas fa-users"></i> Community Building</span>
+                            <span><i class="fas fa-award"></i> Leadership Growth</span>
+                        </div>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfocB-mt7-vHGxtrPSOSWA0TvRRfBzgdvq7JOD24G4ZZO91QQ/viewform"
+                            target="_blank" class="btn-event">Apply Now <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- [Research] VNIAS Research Group -->
+                <div class="event-card">
+                    <div class="event-image">
+                        <img src="activities_images/research_group_genomics.png" alt="VNIAS Research Group">
+                    </div>
+                    <div class="event-details">
+                        <span class="event-category">Research</span>
+                        <h3>VNIAS Research Group</h3>
+                        <p>Advancing Plant Genomics with Bioinformatics and Computational Modeling to unlock plant
+                            potential.</p>
+                        <div class="event-meta">
+                            <span><i class="fas fa-microscope"></i> Plant Genomics</span>
+                            <span><i class="fas fa-database"></i> Data-Driven</span>
+                        </div>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfocB-mt7-vHGxtrPSOSWA0TvRRfBzgdvq7JOD24G4ZZO91QQ/viewform"
+                            target="_blank" class="btn-event">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- [Opportunities] Guidance -->
+                <div class="event-card">
+                    <div class="event-image">
+                        <img src="activities_images/opportunities_by_us.png" alt="Opportunities by VNIAS">
+                        <div class="event-date-badge">
+                            <span class="day-text">OPEN</span>
+                        </div>
+                    </div>
+                    <div class="event-details">
+                        <span class="event-category">Resources</span>
+                        <h3>Opportunities By US</h3>
+                        <p>Providing scholarship guidance, courses, webinars, and seminar opportunities for professional
+                            growth.</p>
+                        <div class="event-meta">
+                            <span><i class="fas fa-graduation-cap"></i> Scholarships</span>
+                            <span><i class="fas fa-book"></i> Courses</span>
+                        </div>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfocB-mt7-vHGxtrPSOSWA0TvRRfBzgdvq7JOD24G4ZZO91QQ/viewform"
+                            target="_blank" class="btn-event">Explore <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- [Meeting] University of Swat -->
+                <div class="event-card">
+                    <div class="event-image">
+                        <img src="activities_images/swat_university_meeting.png" alt="Meeting at University of Swat">
+                        <div class="event-date-badge">
+                            <span class="day">13</span>
+                            <span class="month">NOV</span>
+                        </div>
+                    </div>
+                    <div class="event-details">
+                        <span class="event-category">Meeting</span>
+                        <h3>UoS Partnership Meeting</h3>
+                        <p>Strategic partnership meeting between VNIAS leadership and Vice Chancellor of University of
+                            Swat.</p>
+                        <div class="event-meta">
+                            <span><i class="fas fa-handshake"></i> Research Initiatives</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Swat, KPK</span>
+                        </div>
+                        <a href="#" class="btn-event">Read Event <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- [Meeting] 1st Ambassador Meeting -->
+                <div class="event-card">
+                    <div class="event-image">
+                        <img src="activities_images/ambassador_meeting_lahore.png" alt="1st Ambassador Meeting Lahore">
+                    </div>
+                    <div class="event-details">
+                        <span class="event-category">Meeting</span>
+                        <h3>Ambassador Meetup</h3>
+                        <p>1st International Ambassador's Meeting held in Lahore to strengthen global scientific
+                            engagement.</p>
+                        <div class="event-meta">
+                            <span><i class="fas fa-globe"></i> 1st International</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Lahore, PAK</span>
+                        </div>
+                        <a href="#" class="btn-event">Gallery <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- [Event] Career Compass -->
+                <div class="event-card">
+                    <div class="event-image">
+                        <img src="activities_images/career_compass_bzu.png" alt="Career Compass BZU">
+                    </div>
+                    <div class="event-details">
+                        <span class="event-category">Workshop</span>
+                        <h3>Career Compass BZU</h3>
+                        <p>Guiding youth towards purpose and passion through expert-led career counseling at BZU.</p>
+                        <div class="event-meta">
+                            <span><i class="fas fa-compass"></i> Career Guidance</span>
+                            <span><i class="fas fa-university"></i> BZU Pakistan</span>
+                        </div>
+                        <a href="#" class="btn-event">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; 2024 VitaNova International Alliance For Sciences. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="activities.js"></script>
+</body>
+
+</html>
