@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard - VitaNova</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Montserrat:wght@700;800;900&display=swap">
+</head>
+
+<body>
+
+    <!-- ADMIN HEADER -->
+    <header class="admin-header">
+        <div class="header-content">
+            <div class="brand">
+                <img src="https://lh3.googleusercontent.com/sitesv/APaQ0SR6Mmv4KYK034-X9GbJHFVY6swM0h_bwp3D952PlE7yithn6q5CbLnck1LifX6VNdZV_3sw4LS8HRG6lQf2NPyM8H0sDEaPsP4rpMU48oRQn9KU0p7gsuvRfetV0FA9n_PNB6rii55Qyf_o0yc2MNr7X6-LUBiifjg6cmMiLGdV2EM4dX2o7VTM=w16383"
+                    alt="Logo" class="brand-logo">
+                <span>VitaNova Admin</span>
+            </div>
+
+            <div class="user-greeting">
+                <span class="welcome-text">Welcome User!</span>
+                <div class="user-profile">
+                    <span class="user-name">Ghulam Murtaza</span>
+                    <img src="team_images/ghulam_murtaza.png"
+                        onerror="this.src='https://ui-avatars.com/api/?name=Ghulam+Murtaza'" alt="Admin"
+                        class="user-avatar">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- DASHBOARD BODY -->
+    <main class="dashboard-container">
+        <div class="dashboard-grid">
+
+            <!-- Card 1: Manage Users -->
+            <div class="dashboard-card user-card">
+                <div class="card-header">
+                    <div class="icon-box">
+                        <i class="fas fa-users-cog"></i>
+                    </div>
+                    <h3>Manage Users/Team</h3>
+                </div>
+                <div class="card-body">
+                    <p>Add, remove, or update team member profiles and roles.</p>
+                    <div class="action-list">
+                        <button class="action-btn primary"><i class="fas fa-plus"></i> Add Member</button>
+                        <button class="action-btn outline"><i class="fas fa-list"></i> View All</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2: Manage Applications -->
+            <div class="dashboard-card app-card">
+                <div class="card-header">
+                    <div class="icon-box">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3>Manage Applications</h3>
+                </div>
+                <div class="card-body">
+                    <div class="stats-row">
+                        <div class="stat">
+                            <span class="number">12</span>
+                            <span class="label">New</span>
+                        </div>
+                        <div class="stat">
+                            <span class="number">45</span>
+                            <span class="label">Total</span>
+                        </div>
+                    </div>
+                    <ul class="recent-list">
+                        <li>
+                            <span class="applicant">John Doe</span>
+                            <span class="status new">New</span>
+                        </li>
+                        <li>
+                            <span class="applicant">Sarah Smith</span>
+                            <span class="status review">Review</span>
+                        </li>
+                        <li>
+                            <span class="applicant">Ali Khan</span>
+                            <span class="status new">New</span>
+                        </li>
+                    </ul>
+                    <button class="action-btn full-width"><i class="fas fa-external-link-alt"></i> View All
+                        Applications</button>
+                </div>
+            </div>
+
+            <!-- Card 3: Manage Activities -->
+            <div class="dashboard-card activity-card">
+                <div class="card-header">
+                    <div class="icon-box">
+                        <i class="fas fa-calendar-plus"></i>
+                    </div>
+                    <h3>Manage Activities</h3>
+                </div>
+                <div class="card-body">
+                    <form id="activityForm" class="quick-add-form">
+                        <input type="text" placeholder="Event Title" class="mini-input">
+                        <div class="upload-area">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <span>Drop event photo here</span>
+                        </div>
+                        <button class="action-btn primary full-width"><i class="fas fa-save"></i> Publish Event</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="admin.js"></script>
+</body>
+
+</html>

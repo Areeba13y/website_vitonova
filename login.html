@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Login - VitaNova</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Montserrat:wght@700;800;900&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+</head>
+
+<body>
+
+    <!-- REUSED HEADER -->
+    <header class="header">
+        <div class="navbar">
+            <div class="menu-icon" onclick="openDrawer()">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <div class="logo-area animate__animated animate__fadeInLeft">
+                <div class="logo-image">
+                    <a href="index.html">
+                        <img src="https://lh3.googleusercontent.com/sitesv/APaQ0SR6Mmv4KYK034-X9GbJHFVY6swM0h_bwp3D952PlE7yithn6q5CbLnck1LifX6VNdZV_3sw4LS8HRG6lQf2NPyM8H0sDEaPsP4rpMU48oRQn9KU0p7gsuvRfetV0FA9n_PNB6rii55Qyf_o0yc2MNr7X6-LUBiifjg6cmMiLGdV2EM4dX2o7VTM=w16383"
+                            alt="VitaNova Logo" class="logo-img">
+                    </a>
+                </div>
+                <div class="logo-text">
+                    <h1 class="logo-title">VitaNova</h1>
+                    <p class="logo-subtitle">International Alliance For Sciences</p>
+                </div>
+            </div>
+
+            <nav class="menu animate__animated animate__fadeInRight">
+                <a href="index.html#home"><i class="fas fa-home"></i> HOME</a>
+                <a href="index.html#mission"><i class="fas fa-rocket"></i> MISSION</a>
+                <a href="collaboration.html"><i class="fas fa-handshake"></i> COLLABORATIONS</a>
+                <a href="career.html"><i class="fas fa-briefcase"></i> CAREER</a>
+                <a href="activities.html"><i class="fas fa-calendar-alt"></i> ACTIVITIES</a>
+                <a href="team.html"><i class="fas fa-users"></i> TEAM</a>
+                <a href="login.html" class="active"><i class="fas fa-lock"></i> ADMIN</a>
+                <a href="index.html#contact"><i class="fas fa-envelope"></i> CONTACT</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- DRAWER -->
+    <div id="drawer" class="drawer">
+        <div class="drawer-header">
+            <div class="drawer-logo">
+                <img src="https://lh3.googleusercontent.com/sitesv/APaQ0SR6Mmv4KYK034-X9GbJHFVY6swM0h_bwp3D952PlE7yithn6q5CbLnck1LifX6VNdZV_3sw4LS8HRG6lQf2NPyM8H0sDEaPsP4rpMU48oRQn9KU0p7gsuvRfetV0FA9n_PNB6rii55Qyf_o0yc2MNr7X6-LUBiifjg6cmMiLGdV2EM4dX2o7VTM=w16383"
+                    alt="VitaNova Logo" class="drawer-logo-img">
+                <span>VitaNova</span>
+            </div>
+            <span class="close-btn" onclick="closeDrawer()">×</span>
+        </div>
+        <div class="drawer-content">
+            <a href="index.html" onclick="closeDrawer()"><i class="fas fa-home"></i> HOME</a>
+            <a href="index.html#mission" onclick="closeDrawer()"><i class="fas fa-rocket"></i> MISSION</a>
+            <a href="collaboration.html" onclick="closeDrawer()"><i class="fas fa-handshake"></i> COLLABORATIONS</a>
+            <a href="career.html" onclick="closeDrawer()"><i class="fas fa-briefcase"></i> CAREER</a>
+            <a href="activities.html" onclick="closeDrawer()"><i class="fas fa-calendar-alt"></i> ACTIVITIES</a>
+            <a href="team.html" onclick="closeDrawer()"><i class="fas fa-users"></i> TEAM</a>
+            <a href="login.html" onclick="closeDrawer()" class="active"><i class="fas fa-lock"></i> ADMIN</a>
+            <a href="index.html#contact" onclick="closeDrawer()"><i class="fas fa-envelope"></i> CONTACT</a>
+        </div>
+    </div>
+
+    <!-- LOGIN SECTION -->
+    <section class="login-section">
+        <div class="container">
+            <div class="login-card animate__animated animate__zoomIn">
+                <div class="login-header">
+                    <div class="lock-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h2>Admin Portal</h2>
+                    <p>Secure login for authorized personnel</p>
+                </div>
+
+                <form id="loginForm">
+                    <div class="input-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="username" placeholder="Username" required>
+                    </div>
+
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" placeholder="Password" required>
+                    </div>
+
+                    <div id="errorMsg" class="error-msg">
+                        <i class="fas fa-exclamation-circle"></i> Invalid credentials.
+                    </div>
+
+                    <button type="submit" class="login-btn">
+                        <span>Access Dashboard</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; 2024 VitaNova International Alliance For Sciences. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="login.js"></script>
+</body>
+
+</html>

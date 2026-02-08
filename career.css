@@ -1,0 +1,232 @@
+/* Career Page Specific Styles */
+
+/* PAGE HEADER REUSED FROM OTHER PAGES BUT TWEAKED IF NEEDED */
+.page-header {
+    background: linear-gradient(135deg, #0a3d2e 0%, #1a7d5e 100%);
+    color: white;
+    padding: 150px 0 80px;
+    text-align: center;
+    margin-top: -100px;
+}
+
+.page-header h1 {
+    font-size: 3.5rem;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 20px;
+    background: linear-gradient(45deg, #2ecc71, #ffd700);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.page-header p {
+    font-size: 1.2rem;
+    color: #c8f7c5;
+}
+
+/* CAREER FORM SECTION */
+.career-form-section {
+    padding: 80px 0;
+    background: #f8f9fa;
+    display: flex;
+    justify-content: center;
+}
+
+.form-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+    padding: 50px;
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+    border-top: 5px solid #2ecc71;
+    transition: transform 0.3s ease;
+}
+
+.form-card:hover {
+    transform: translateY(-5px);
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.form-header h2 {
+    color: #0a3d2e;
+    font-size: 2rem;
+    margin-bottom: 10px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.form-header p {
+    color: #666;
+}
+
+/* FORM STYLES */
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+    font-size: 0.95rem;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.input-wrapper i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #2ecc71;
+}
+
+.input-wrapper input,
+.input-wrapper select {
+    width: 100%;
+    padding: 15px 15px 15px 45px;
+    border: 2px solid #eee;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    outline: none;
+    background: white;
+    appearance: none;
+    /* Remove default arrow */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.input-wrapper input:focus,
+.input-wrapper select:focus {
+    border-color: #2ecc71;
+    box-shadow: 0 0 0 4px rgba(46, 204, 113, 0.1);
+}
+
+.select-arrow {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    pointer-events: none;
+    left: auto !important;
+    /* Override the left icon style */
+}
+
+/* FILE UPLOAD STYLES */
+.file-upload-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.file-upload-label {
+    background: #e8f5e9;
+    color: #2ecc71;
+    padding: 12px 25px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 2px solid transparent;
+}
+
+.file-upload-label:hover {
+    background: #d0ebd3;
+    transform: translateY(-2px);
+}
+
+.file-name {
+    color: #777;
+    font-size: 0.9rem;
+    font-style: italic;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+}
+
+/* SUBMIT BUTTON */
+.submit-btn {
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+/* SUCCESS MESSAGE */
+.success-message {
+    text-align: center;
+    padding: 20px;
+    animation: fadeIn 0.5s ease;
+}
+
+.success-icon {
+    font-size: 60px;
+    color: #2ecc71;
+    margin-bottom: 20px;
+    animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.success-message h3 {
+    color: #0a3d2e;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.success-message p {
+    color: #666;
+    margin-bottom: 30px;
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    60% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .page-header h1 {
+        font-size: 2.5rem;
+    }
+
+    .form-card {
+        padding: 30px;
+        margin: 0 20px;
+    }
+}

@@ -1,0 +1,160 @@
+/* Login Page Styles */
+
+/* Reuse Page Header Gradient for background if possible, or just section standard */
+.login-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e8f5e9 100%);
+    padding: 100px 20px;
+}
+
+.login-card {
+    background: white;
+    padding: 50px;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+    border-top: 5px solid #2ecc71;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-header {
+    margin-bottom: 30px;
+}
+
+.lock-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    color: white;
+    font-size: 30px;
+    box-shadow: 0 10px 20px rgba(46, 204, 113, 0.3);
+    animation: floatIcon 3s ease-in-out infinite;
+}
+
+@keyframes floatIcon {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.login-header h2 {
+    color: #0a3d2e;
+    font-size: 1.8rem;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 5px;
+}
+
+.login-header p {
+    color: #777;
+    font-size: 0.9rem;
+}
+
+/* FORM */
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-group i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #bbb;
+    transition: color 0.3s ease;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 15px 15px 15px 45px;
+    border: 2px solid #eee;
+    border-radius: 10px;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+    border-color: #2ecc71;
+}
+
+.input-group input:focus+i,
+.input-group input:focus~i {
+    color: #2ecc71;
+}
+
+/* ERROR MSG */
+.error-msg {
+    color: #e74c3c;
+    background: rgba(231, 76, 60, 0.1);
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+/* BUTTON */
+.login-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 10px 20px rgba(46, 204, 113, 0.3);
+}
+
+.login-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(46, 204, 113, 0.4);
+}
+
+.login-btn:active {
+    transform: translateY(1px);
+}
