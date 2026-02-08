@@ -1,3 +1,5 @@
+
+
 /* QUICK FIX FOR HEADER OVERLAP */
 body {
   padding-top: 100px;
@@ -437,8 +439,8 @@ body {
 
 .ls-text {
   color: white;
-  font-size: 2.5rem;
-  font-weight: 800;
+  font-size: 1.5rem;
+  font-weight: 00;
   font-family: 'Montserrat', sans-serif;
   background: linear-gradient(45deg, #ffd700, #ffed4e, #ffd700);
   background-clip: text;
