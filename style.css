@@ -79,8 +79,8 @@ body {
 }
 
 .logo-image {
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
   flex-shrink: 0;
   border-radius: 12px;
   background: white;
@@ -145,9 +145,9 @@ body {
 .menu a {
   color: #e8f5e9;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 13.5px;
   font-weight: 600;
-  padding: 12px 18px;
+  padding: 10px 12px;
   border-radius: 8px;
   transition: all 0.3s ease;
   display: flex;
@@ -624,8 +624,10 @@ body {
 }
 
 .title-shadow {
-  display: none;  /* Hides the shadow text */
+  display: none;
+  /* Hides the shadow text */
 }
+
 /* FOUNDER SECTION */
 .founder-section {
   padding: 120px 0;
@@ -1439,24 +1441,25 @@ body {
     text-align: center;
     padding: 30px;
   }
-  
+
   .event-content h3::after {
     left: 50%;
     transform: translateX(-50%);
   }
-  
+
   .event-tags {
     justify-content: center;
   }
-  
+
   .event-date {
     min-width: 120px;
   }
-  
+
   .event-date .day {
     font-size: 2.5rem;
   }
 }
+
 /* CONTACT SECTION - MODERN REDESIGN */
 .contact-section {
   padding: 100px 0;
@@ -1802,8 +1805,8 @@ body {
   border-radius: 3px;
 }
 
-.form-group-modern input:focus ~ .input-focus-effect,
-.form-group-modern textarea:focus ~ .input-focus-effect {
+.form-group-modern input:focus~.input-focus-effect,
+.form-group-modern textarea:focus~.input-focus-effect {
   width: 90%;
 }
 
@@ -1862,11 +1865,11 @@ body {
     grid-template-columns: 1fr;
     gap: 40px;
   }
-  
+
   .contact-info {
     order: 2;
   }
-  
+
   .contact-form-wrapper {
     order: 1;
   }
@@ -1876,41 +1879,41 @@ body {
   .contact-section {
     padding: 70px 0;
   }
-  
+
   .contact-section .section-title {
     font-size: 2.2rem;
   }
-  
+
   .contact-card {
     padding: 25px;
   }
-  
+
   .contact-icon {
     width: 60px;
     height: 60px;
     font-size: 24px;
   }
-  
+
   .contact-details h3 {
     font-size: 1.1rem;
   }
-  
+
   .contact-details p {
     font-size: 0.95rem;
   }
-  
+
   .form-header {
     padding: 25px 30px;
   }
-  
+
   .form-header h3 {
     font-size: 1.5rem;
   }
-  
+
   .form-container-modern {
     padding: 30px;
   }
-  
+
   .social-grid-modern {
     justify-content: center;
   }
@@ -1922,32 +1925,33 @@ body {
     text-align: center;
     padding: 25px 20px;
   }
-  
+
   .contact-card::before {
     width: 100%;
     height: 5px;
     top: 0;
     left: 0;
   }
-  
+
   .contact-card:hover::before {
     height: 8px;
     width: 100%;
   }
-  
+
   .contact-icon {
     margin-bottom: 10px;
   }
-  
+
   .form-container-modern {
     padding: 25px 20px;
   }
-  
+
   .submit-btn-modern {
     padding: 15px 25px;
     font-size: 1rem;
   }
 }
+
 /* INTERACTIVE MAP */
 .map-section {
   padding: 80px 0;
@@ -2686,4 +2690,52 @@ body {
     flex: 0 0 260px;
     /* Smaller cards on mobile */
   }
+}
+
+/* FOUNDER IMAGE STYLING */
+.founder-image-container {
+  width: 100%;
+  max-width: 400px;
+  height: 500px;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+}
+
+.founder-img-full {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.5s ease;
+}
+
+.founder-img-full:hover {
+  transform: scale(1.05);
+}
+
+.image-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  padding: 20px;
+  color: white;
+  display: flex;
+  align-items: flex-end;
+}
+
+.founder-badge h4 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.founder-badge p {
+  margin: 5px 0 0;
+  font-size: 1rem;
+  opacity: 0.9;
 }
