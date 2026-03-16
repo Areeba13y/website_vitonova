@@ -26,25 +26,69 @@ document.addEventListener('DOMContentLoaded', () => {
         form.addEventListener('submit', function (e) {
             e.preventDefault();
 
-            // Simulate API call / processing
+            const formData = new FormData(form);
             const submitBtn = this.querySelector('button[type="submit"]');
             const originalContent = submitBtn.innerHTML;
 
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
-            submitBtn.style.opacity = '0.8';
+            submitBtn.disabled = true;
+            submitBtn.style.opacity = '0.7';
 
-            setTimeout(() => {
-                // Success state
-                form.style.display = 'none';
-                successMessage.style.display = 'block';
+            const ports = [8001, 8000]; // Try 8001 first (since 8000 is often blocked), then fallback to 8000
+            let currentPortIndex = 0;
+            const scriptVersion = "2.1"; // Updated port fallback logic
 
-                // Reset button for next time (hidden though)
-                submitBtn.innerHTML = originalContent;
-                submitBtn.style.opacity = '1';
+            const trySubmit = (port) => {
+                const apiUrl = `http://localhost:${port}/api/join-team`;
+                
+                fetch(apiUrl, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        return response.json().then(err => { throw err; });
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.success) {
+                        // Success state
+                        form.style.display = 'none';
+                        successMessage.style.display = 'block';
+                        successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    } else {
+                        alert('Submission failed: ' + (data.message || 'Unknown error'));
+                    }
+                })
+                .catch(error => {
+                    console.error(`Error on port ${port}:`, error);
+                    
+                    if (currentPortIndex < ports.length - 1) {
+                        currentPortIndex++;
+                        console.log(`Retrying on port ${ports[currentPortIndex]}...`);
+                        trySubmit(ports[currentPortIndex]);
+                    } else {
+                        let detailedError = error.message || 'Network error or CORS issue.';
+                        if (error.errors) {
+                            detailedError = Object.values(error.errors).flat().join('\n');
+                        }
+                        alert(`Something went wrong (Script v${scriptVersion})!\n\nDetails: ${detailedError}\n\nAttempted URL: ${apiUrl}\n\nPlease check if your Laravel server is running and you have refreshed the page (Ctrl + F5).`);
+                    }
+                })
+                .finally(() => {
+                    if (currentPortIndex === ports.length - 1 || form.style.display === 'none') {
+                        submitBtn.innerHTML = originalContent;
+                        submitBtn.disabled = false;
+                        submitBtn.style.opacity = '1';
+                    }
+                });
+            };
 
-                // Scroll to top of card if needed
-                successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }, 1500);
+            trySubmit(ports[currentPortIndex]);
         });
     }
 });
