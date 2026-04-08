@@ -79,68 +79,805 @@
     <!-- TEAM GRID SECTION -->
     <section class="team-section">
         <div class="container">
+            <!-- Team Filter Tabs -->
+            <div class="team-filters animate__animated animate__fadeInUp">
+                <button class="filter-btn active" data-filter="all">All Units</button>
+                <button class="filter-btn" data-filter="leadership">Leadership Unit</button>
+                <button class="filter-btn" data-filter="secretariat">Secretariat Unit</button>
+                <button class="filter-btn" data-filter="media-relations">Media Relations Unit</button>
+                <button class="filter-btn" data-filter="it">IT Unit</button>
+                <button class="filter-btn" data-filter="policy-research">Policy & Research Unit</button>
+                <button class="filter-btn" data-filter="content-writing">Content Writing Unit</button>
+                <button class="filter-btn" data-filter="social-media">Social Media Handling Unit</button>
+                <button class="filter-btn" data-filter="scholarship-guidance">Scholarship Guidance Unit</button>
+                <button class="filter-btn" data-filter="event-organizing">Event Organizing & Planning Team</button>
+                <button class="filter-btn" data-filter="global-lead-ambassador">Global Lead Ambassador Unit</button>
+            </div>
+
             <div class="team-grid">
 
-                <!-- Member 1: President -->
-                <div class="team-card animate-on-scroll">
+                <!-- Member 1: Ghulam Murtaza -->
+                <div class="team-card animate-on-scroll" data-department="leadership">
                     <div class="team-img-container">
-                        <img src="team_images/ghulam_murtaza.png" alt="Mr. Ghulam Murtaza" class="team-img">
-                        <div class="team-social">
-                            <a href="#"><i class="fab fa-linkedin"></i></a>
-                        </div>
+                        <img src="team_images/ghulam_murtaza.png" alt="Mr. Ghulam Murtaza" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Ghulam+Murtaza&background=2ecc71&color=fff&size=200'">
                     </div>
                     <div class="team-info">
                         <h3>Mr. Ghulam Murtaza</h3>
-                        <p class="role">President</p>
-                        <p class="university">University of Agriculture Faisalabad</p>
+                        <p class="role">CEO & President</p>
+                        <p class="university">University of Agriculture Faisalabad, Pakistan</p>
                     </div>
                 </div>
 
-                <!-- Member 2: Senior Vice President -->
-                <div class="team-card animate-on-scroll">
+                <!-- Member 2: Dr. M. Shahzad Zafar -->
+                <div class="team-card animate-on-scroll" data-department="leadership">
                     <div class="team-img-container">
-                        <img src="team_images/shahzad_zafar.png" alt="Dr. Muhammad Shahzad Zafar" class="team-img">
-                        <div class="team-social">
-                            <a href="#"><i class="fab fa-linkedin"></i></a>
-                        </div>
+                        <img src="team_images/shahzad_zafar.png" alt="Dr. M. Shahzad Zafar" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Dr.+Shahzad+Zafar&background=2ecc71&color=fff&size=200'">
                     </div>
                     <div class="team-info">
-                        <h3>Dr. Muhammad Shahzad Zafar</h3>
+                        <h3>Dr. M. Shahzad Zafar</h3>
                         <p class="role">Senior Vice President</p>
                         <p class="university">Shenzhen University, China</p>
                     </div>
                 </div>
 
-                <!-- Member 3: Vice President -->
-                <div class="team-card animate-on-scroll">
+                <!-- Member 3: Hafsa Sarfraz -->
+                <div class="team-card animate-on-scroll" data-department="leadership">
                     <div class="team-img-container">
-                        <img src="team_images/hafsa_sarfraz.png" alt="Miss. Hafsa Sarfraz" class="team-img">
-                        <div class="team-social">
-                            <a href="#"><i class="fab fa-linkedin"></i></a>
-                        </div>
+                        <img src="team_images/hafsa_sarfraz.png" alt="Miss. Hafsa Sarfraz" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Hafsa+Sarfraz&background=2ecc71&color=fff&size=200'">
                     </div>
                     <div class="team-info">
                         <h3>Miss. Hafsa Sarfraz</h3>
                         <p class="role">Vice President</p>
-                        <p class="university">University of Agriculture Faisalabad</p>
+                        <p class="university">University of Agriculture Faisalabad, Pakistan</p>
                     </div>
                 </div>
 
-                <!-- Member 4: Head Collaborations -->
-                <div class="team-card animate-on-scroll">
+                <!-- Member 4: Nurpur Akhter -->
+                <div class="team-card animate-on-scroll" data-department="leadership">
                     <div class="team-img-container">
-                        <img src="team_images/anmol_bhatti.png" alt="Miss. Anmol Bhatti" class="team-img">
-                        <div class="team-social">
-                            <a href="#"><i class="fab fa-linkedin"></i></a>
-                        </div>
+                        <img src="team_images/nurpur_akhter.png" alt="Nurpur Akhter" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Nurpur+Akhter&background=2ecc71&color=fff&size=200'">
                     </div>
                     <div class="team-info">
-                        <h3>Miss. Anmol Bhatti</h3>
-                        <p class="role">Head Collaborations</p>
-                        <p class="university">University of Agriculture Faisalabad</p>
+                        <h3>Nurpur Akhter</h3>
+                        <p class="role">Head of Collaborations</p>
+                        <p class="university">University of Science and Technology Chittagong, Bangladesh</p>
                     </div>
                 </div>
 
+                <!-- Member 5: Aisha -->
+                <div class="team-card animate-on-scroll" data-department="leadership">
+                    <div class="team-img-container">
+                        <img src="team_images/aisha.png" alt="Aisha" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Aisha&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Aisha</h3>
+                        <p class="role">General Secretary</p>
+                        <p class="university">University of Sindh, Pakistan</p>
+                    </div>
+                </div>
+
+                <!-- Member 6: Ruqia -->
+                <div class="team-card animate-on-scroll" data-department="secretariat">
+                    <div class="team-img-container">
+                        <img src="team_images/ruqia.png" alt="Ruqia" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Ruqia&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Ruqia</h3>
+                        <p class="role">Record Keeping Secretary</p>
+                        <p class="university">University of Agriculture Faisalabad, Pakistan</p>
+                    </div>
+                </div>
+
+                <!-- Member 7: Dr. Alveena Zahra -->
+                <div class="team-card animate-on-scroll" data-department="secretariat">
+                    <div class="team-img-container">
+                        <img src="team_images/alveena_zahra.png" alt="Dr. Alveena Zahra" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Dr.+Alveena+Zahra&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Dr. Alveena Zahra</h3>
+                        <p class="role">Peer Mentor</p>
+                        <p class="university">Jinnah Woman University Karachi, Pakistan</p>
+                    </div>
+                </div>
+
+                <!-- Member 8: Dr. Wazir Ali -->
+                <div class="team-card animate-on-scroll" data-department="secretariat">
+                    <div class="team-img-container">
+                        <img src="team_images/wazir_ali.png" alt="Dr. Wazir Ali" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Dr.+Wazir+Ali&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Dr. Wazir Ali</h3>
+                        <p class="role">Community Outreach Partner</p>
+                        <p class="university">Shaheed Benazir Bhutto University, Shaheed Benazirabad, Pakistan</p>
+                    </div>
+                </div>
+
+                <!-- Member 9: Dr. Aitaj Ashgarova -->
+                <div class="team-card animate-on-scroll" data-department="secretariat">
+                    <div class="team-img-container">
+                        <img src="team_images/aitaj_ashgarova.png" alt="Dr. Aitaj Ashgarova" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Dr.+Aitaj+Ashgarova&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Dr. Aitaj Ashgarova</h3>
+                        <p class="role">Public Speaker & Coordinator</p>
+                        <p class="university">Scientific Research Institute of Fruit and Tea Growing, Azerbaijan</p>
+                    </div>
+                </div>
+
+                <!-- Member 10: Dr. Mouna -->
+                <div class="team-card animate-on-scroll" data-department="secretariat">
+                    <div class="team-img-container">
+                        <img src="team_images/mouna.png" alt="Dr. Mouna" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Dr.+Mouna&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Dr. Mouna</h3>
+                        <p class="role">Research Coordinator</p>
+                        <p class="university">Hassan II University of Casablanca, Morocco</p>
+                    </div>
+                </div>
+
+                <!-- Member 11: Shakeela Anjum -->
+                <div class="team-card animate-on-scroll" data-department="secretariat">
+                    <div class="team-img-container">
+                        <img src="team_images/shakeela_anjum.png" alt="Shakeela Anjum" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Shakeela+Anjum&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Shakeela Anjum</h3>
+                        <p class="role">Secretariat Coordinator</p>
+                        <p class="university">University of Baltistan, Pakistan</p>
+                    </div>
+                </div>
+
+                <!-- Member 12: Ayesha Nazir -->
+                <div class="team-card animate-on-scroll" data-department="media-relations">
+                    <div class="team-img-container">
+                        <img src="team_images/ayesha_nazir.png" alt="Ayesha Nazir" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Ayesha+Nazir&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Ayesha Nazir</h3>
+                        <p class="role">Media Relations Officer</p>
+                        <p class="university">Bahaudin Zakriya University Multan, Pakistan</p>
+                    </div>
+                </div>
+
+                <!-- Member 13: Susan Aestino -->
+                <div class="team-card animate-on-scroll" data-department="media-relations">
+                    <div class="team-img-container">
+                        <img src="team_images/susan_aestino.png" alt="Susan Aestino" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Susan+Aestino&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Susan Aestino</h3>
+                        <p class="role">Graphic Designer</p>
+                    </div>
+                </div>
+
+                <!-- Member 14: Aleeshbah Amir -->
+                <div class="team-card animate-on-scroll" data-department="media-relations">
+                    <div class="team-img-container">
+                        <img src="team_images/aleeshbah_amir.png" alt="Aleeshbah Amir" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Aleeshbah+Amir&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Aleeshbah Amir</h3>
+                        <p class="role">Graphic Designer</p>
+                        <p class="university">National University of Medical Sciences</p>
+                    </div>
+                </div>
+
+                <!-- Member 15: Mr. Phillip -->
+                <div class="team-card animate-on-scroll" data-department="media-relations">
+                    <div class="team-img-container">
+                        <img src="team_images/mr_phillip.png" alt="Mr. Phillip" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Mr.+Phillip&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Mr. Phillip</h3>
+                        <p class="role">Graphic Designer</p>
+                    </div>
+                </div>
+
+                <!-- Member 16: Asma Ghaffar -->
+                <div class="team-card animate-on-scroll" data-department="media-relations">
+                    <div class="team-img-container">
+                        <img src="team_images/asma_ghaffar.png" alt="Asma Ghaffar" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Asma+Ghaffar&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Asma Ghaffar</h3>
+                        <p class="role">Graphic Designer</p>
+                        <p class="university">University of Agriculture Faisalabad, Pakistan</p>
+                    </div>
+                </div>
+
+                <!-- Member 17: Zainab -->
+                <div class="team-card animate-on-scroll" data-department="media-relations">
+                    <div class="team-img-container">
+                        <img src="team_images/zainab.png" alt="Zainab" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Zainab&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Zainab</h3>
+                        <p class="role">Graphic Designer</p>
+                        <p class="university">Quid e Azam University, Islamabad, Pakistan</p>
+                    </div>
+                </div>
+
+                <!-- Member 18: Wajeeha -->
+                <div class="team-card animate-on-scroll" data-department="media-relations">
+                    <div class="team-img-container">
+                        <img src="team_images/wajeeha.png" alt="Wajeeha" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Wajeeha&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Wajeeha</h3>
+                        <p class="role">Graphic Designer</p>
+                    </div>
+                </div>
+
+                <!-- Member 19: Rabia Soomro -->
+                <div class="team-card animate-on-scroll" data-department="it">
+                    <div class="team-img-container">
+                        <img src="team_images/rabia_soomro.png" alt="Rabia Soomro" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Rabia+Soomro&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Rabia Soomro</h3>
+                        <p class="role">Director IT Unit</p>
+                        <p class="university">Sukkur IBA University</p>
+                    </div>
+                </div>
+
+                <!-- Member 20: Areeba Yasir -->
+                <div class="team-card animate-on-scroll" data-department="it">
+                    <div class="team-img-container">
+                        <img src="team_images/areeba_yasir.png" alt="Areeba Yasir" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Areeba+Yasir&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Areeba Yasir</h3>
+                        <p class="role">Deputy Director</p>
+                        <p class="university">Fatima Jinnah Woman University Rawalpindi</p>
+                    </div>
+                </div>
+
+                <!-- Member 21: Usman Sarwar -->
+                <div class="team-card animate-on-scroll" data-department="it">
+                    <div class="team-img-container">
+                        <img src="team_images/usman_sarwar.png" alt="Usman Sarwar" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Usman+Sarwar&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Usman Sarwar</h3>
+                        <p class="role">Systems & Integration Coordinator</p>
+                        <p class="university">Sukkur IBA University</p>
+                    </div>
+                </div>
+
+                <!-- Member 22: Muhammad Bilal -->
+                <div class="team-card animate-on-scroll" data-department="it">
+                    <div class="team-img-container">
+                        <img src="team_images/muhammad_bilal.png" alt="Muhammad Bilal" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Muhammad+Bilal&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Muhammad Bilal</h3>
+                        <p class="role">Backend Operations Developer</p>
+                        <p class="university">Government College University Faisalabad</p>
+                    </div>
+                </div>
+
+                <!-- Member 23: Sibgha Mursaleen -->
+                <div class="team-card animate-on-scroll" data-department="it">
+                    <div class="team-img-container">
+                        <img src="team_images/sibgha_mursaleen.png" alt="Sibgha Mursaleen" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Sibgha+Mursaleen&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Sibgha Mursaleen</h3>
+                        <p class="role">Digital Platforms Coordinator</p>
+                        <p class="university">Sukkur IBA University</p>
+                    </div>
+                </div>
+
+                <!-- Member 24: Sajia Ashfaq -->
+                <div class="team-card animate-on-scroll" data-department="it">
+                    <div class="team-img-container">
+                        <img src="team_images/sajia_ashfaq.png" alt="Sajia Ashfaq" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Sajia+Ashfaq&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Sajia Ashfaq</h3>
+                        <p class="role">UX & Interface Coordinator</p>
+                        <p class="university">Jinnah University for Women, Karachi</p>
+                    </div>
+                </div>
+
+                <!-- Member 25: Dr. Muhammad Ahmad -->
+                <div class="team-card animate-on-scroll" data-department="policy-research">
+                    <div class="team-img-container">
+                        <img src="team_images/muhammad_ahmad.png" alt="Dr. Muhammad Ahmad" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Dr.+Muhammad+Ahmad&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Dr. Muhammad Ahmad</h3>
+                        <p class="role">Research Projects Manager</p>
+                        <p class="university">China Agriculture University, Beijing, China</p>
+                    </div>
+                </div>
+
+                <!-- Member 26: Elnara Mutelim -->
+                <div class="team-card animate-on-scroll" data-department="policy-research">
+                    <div class="team-img-container">
+                        <img src="team_images/elnara_mutelim.png" alt="Elnara Mutelim" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Elnara+Mutelim&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Elnara Mutelim</h3>
+                        <p class="role">Head of Researchers</p>
+                        <p class="university">Scientific Research Institute of Fruit and Tea Growing, Azerbaijan</p>
+                    </div>
+                </div>
+
+                <!-- Member 27: Rafia Noor ul Ain -->
+                <div class="team-card animate-on-scroll" data-department="policy-research">
+                    <div class="team-img-container">
+                        <img src="team_images/rafia_noor.png" alt="Rafia Noor ul Ain" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Rafia+Noor+ul+Ain&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Rafia Noor ul Ain</h3>
+                        <p class="role">Research Content Writer</p>
+                        <p class="university">Arid Agriculture University, Rawalpindi, Pakistan</p>
+                    </div>
+                </div>
+
+                <!-- Member 28: Babar Ali -->
+                <div class="team-card animate-on-scroll" data-department="policy-research">
+                    <div class="team-img-container">
+                        <img src="team_images/babar_ali.png" alt="Babar Ali" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Babar+Ali&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Babar Ali</h3>
+                        <p class="role">Research Project Leader</p>
+                        <p class="university">University of Agriculture Faisalabad, Pakistan</p>
+                    </div>
+                </div>
+
+                <!-- Member 29: Sabahat Noor -->
+                <div class="team-card animate-on-scroll" data-department="policy-research">
+                    <div class="team-img-container">
+                        <img src="team_images/sabahat_noor.png" alt="Sabahat Noor" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Sabahat+Noor&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Sabahat Noor</h3>
+                        <p class="role">Researcher</p>
+                        <p class="university">Rawalpindi Women University, Pakistan</p>
+                    </div>
+                </div>
+
+                <!-- Member 30: Hina Fatima -->
+                <div class="team-card animate-on-scroll" data-department="policy-research">
+                    <div class="team-img-container">
+                        <img src="team_images/hina_fatima.png" alt="Hina Fatima" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Hina+Fatima&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Hina Fatima</h3>
+                        <p class="role">Researcher</p>
+                        <p class="university">University of Agriculture Faisalabad, Pakistan</p>
+                    </div>
+                </div>
+
+                <!-- Member 31: Dr. Syed Hassan -->
+                <div class="team-card animate-on-scroll" data-department="policy-research">
+                    <div class="team-img-container">
+                        <img src="team_images/syed_hassan.png" alt="Dr. Syed Hassan" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Dr.+Syed+Hassan&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Dr. Syed Hassan</h3>
+                        <p class="role">Researcher</p>
+                        <p class="university">University of Malakand, Balochistan</p>
+                    </div>
+                </div>
+
+                <!-- Member 32: Toufique -->
+                <div class="team-card animate-on-scroll" data-department="content-writing">
+                    <div class="team-img-container">
+                        <img src="team_images/toufique.png" alt="Toufique" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Toufique&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Toufique</h3>
+                        <p class="role">Technical Content Writer</p>
+                        <p class="university">Sindh Agriculture University, Tandojam, Pakistan</p>
+                    </div>
+                </div>
+
+                <!-- Member 33: Hina Sarwar -->
+                <div class="team-card animate-on-scroll" data-department="content-writing">
+                    <div class="team-img-container">
+                        <img src="team_images/hina_sarwar.png" alt="Hina Sarwar" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Hina+Sarwar&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Hina Sarwar</h3>
+                        <p class="role">Content Writer</p>
+                        <p class="university">MNSUA</p>
+                    </div>
+                </div>
+
+                <!-- Member 34: Hafsa Noor -->
+                <div class="team-card animate-on-scroll" data-department="content-writing">
+                    <div class="team-img-container">
+                        <img src="team_images/hafsa_noor.png" alt="Hafsa Noor" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Hafsa+Noor&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Hafsa Noor</h3>
+                        <p class="role">Content Writer</p>
+                    </div>
+                </div>
+
+                <!-- Member 35: Noshaba Hassan -->
+                <div class="team-card animate-on-scroll" data-department="social-media">
+                    <div class="team-img-container">
+                        <img src="team_images/noshaba_hassan.png" alt="Noshaba Hassan" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Noshaba+Hassan&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Noshaba Hassan</h3>
+                        <p class="role">Director Social Media</p>
+                        <p class="university">Women University Multan, Pakistan</p>
+                    </div>
+                </div>
+
+                <!-- Member 36: Mansoor ul Haq -->
+                <div class="team-card animate-on-scroll" data-department="social-media">
+                    <div class="team-img-container">
+                        <img src="team_images/mansoor_ul_haq.png" alt="Mansoor ul Haq" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Mansoor+ul+Haq&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Mansoor ul Haq</h3>
+                        <p class="role">Deputy Director Social Media</p>
+                        <p class="university">Abdul Wali khan University, KPK, Pakistan</p>
+                    </div>
+                </div>
+
+                <!-- Member 37: Arooj Fatima -->
+                <div class="team-card animate-on-scroll" data-department="social-media">
+                    <div class="team-img-container">
+                        <img src="team_images/arooj_fatima.png" alt="Arooj Fatima" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Arooj+Fatima&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Arooj Fatima</h3>
+                        <p class="role">Technical Manager</p>
+                        <p class="university">University of Central Punjab</p>
+                    </div>
+                </div>
+
+                <!-- Member 38: Maryam Shahzadi -->
+                <div class="team-card animate-on-scroll" data-department="social-media">
+                    <div class="team-img-container">
+                        <img src="team_images/maryam_shahzadi.png" alt="Maryam Shahzadi" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Maryam+Shahzadi&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Maryam Shahzadi</h3>
+                        <p class="role">Assistant Manager</p>
+                        <p class="university">University of Agriculture Faisalabad, Pakistan</p>
+                    </div>
+                </div>
+
+                <!-- Member 39: Pirah Arif -->
+                <div class="team-card animate-on-scroll" data-department="social-media">
+                    <div class="team-img-container">
+                        <img src="team_images/pirah_arif.png" alt="Pirah Arif" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Pirah+Arif&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Pirah Arif</h3>
+                        <p class="role">Assistant Manager</p>
+                    </div>
+                </div>
+
+                <!-- Member 40: Riya Jamshid -->
+                <div class="team-card animate-on-scroll" data-department="social-media">
+                    <div class="team-img-container">
+                        <img src="team_images/riya_jamshid.png" alt="Riya Jamshid" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Riya+Jamshid&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Riya Jamshid</h3>
+                        <p class="role">SEO Manager</p>
+                        <p class="university">University of Central Punjab, Pakistan</p>
+                    </div>
+                </div>
+
+                <!-- Member 41: Dr. Ghulam Murtaza -->
+                <div class="team-card animate-on-scroll" data-department="scholarship-guidance">
+                    <div class="team-img-container">
+                        <img src="team_images/Scholarship Guidance Unit/Dr. Ghulam Murtaza .jpeg" alt="Dr. Ghulam Murtaza" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Dr.+Ghulam+Murtaza&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Dr. Ghulam Murtaza</h3>
+                        <p class="role">Scholarship Advisor</p>
+                        <p class="university">Chinese Academy of Sciences, China</p>
+                    </div>
+                </div>
+
+                <!-- Member 42: Shehryar Farid -->
+                <div class="team-card animate-on-scroll" data-department="scholarship-guidance">
+                    <div class="team-img-container">
+                        <img src="team_images/Scholarship Guidance Unit/Sheharyaar Farid.jpeg" alt="Shehryar Farid" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Shehryar+Farid&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Shehryar Farid</h3>
+                        <p class="role">Scholarship Advisor</p>
+                        <p class="university">University of Galway, Ireland</p>
+                    </div>
+                </div>
+
+                <!-- Member 43: M. Kashif Ali -->
+                <div class="team-card animate-on-scroll" data-department="scholarship-guidance">
+                    <div class="team-img-container">
+                        <img src="team_images/Scholarship Guidance Unit/Kashif Ali .jpeg" alt="M. Kashif Ali" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=M.+Kashif+Ali&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>M. Kashif Ali</h3>
+                        <p class="role">Scholarship Advisor</p>
+                    </div>
+                </div>
+
+                <!-- Member 44: Abdullah Shoukat -->
+                <div class="team-card animate-on-scroll" data-department="scholarship-guidance">
+                    <div class="team-img-container">
+                        <img src="team_images/Scholarship Guidance Unit/Abdullah Shoukat .jpeg" alt="Abdullah Shoukat" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Abdullah+Shoukat&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Abdullah Shoukat</h3>
+                        <p class="role">Scholarship Advisor</p>
+                    </div>
+                </div>
+
+                <!-- Member 45: Abdul Hafeez -->
+                <div class="team-card animate-on-scroll" data-department="scholarship-guidance">
+                    <div class="team-img-container">
+                        <img src="team_images/Scholarship Guidance Unit/Abdul Hafeez.jpeg" alt="Abdul Hafeez" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Abdul+Hafeez&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Abdul Hafeez</h3>
+                        <p class="role">Scholarship Advisor</p>
+                    </div>
+                </div>
+
+                <!-- Member 46: Neha Aas Muhammad -->
+                <div class="team-card animate-on-scroll" data-department="event-organizing">
+                    <div class="team-img-container">
+                        <img src="team_images/neha_aas.png" alt="Neha Aas Muhammad" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Neha+Aas+Muhammad&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Neha Aas Muhammad</h3>
+                        <p class="role">Technical Event Manager</p>
+                        <p class="university">Govt. College University, Faisalabad, Pakistan</p>
+                    </div>
+                </div>
+
+                <!-- Member 47: Romesa -->
+                <div class="team-card animate-on-scroll" data-department="event-organizing">
+                    <div class="team-img-container">
+                        <img src="team_images/romesa.png" alt="Romesa" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Romesa&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Romesa</h3>
+                        <p class="role">Marketing Manager</p>
+                        <p class="university">Air University, Islamabad, Pakistan</p>
+                    </div>
+                </div>
+
+                <!-- Member 48: Rimsha Zahir Ali Shah -->
+                <div class="team-card animate-on-scroll" data-department="event-organizing">
+                    <div class="team-img-container">
+                        <img src="team_images/rimsha_zahir.png" alt="Rimsha Zahir Ali Shah" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Rimsha+Zahir&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Rimsha Zahir Ali Shah</h3>
+                        <p class="role">Public Speaker & Host</p>
+                    </div>
+                </div>
+
+                <!-- Member 49: Rozia Gul -->
+                <div class="team-card animate-on-scroll" data-department="event-organizing">
+                    <div class="team-img-container">
+                        <img src="team_images/rozia_gul.png" alt="Rozia Gul" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Rozia+Gul&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Rozia Gul</h3>
+                        <p class="role">Event Coordinator</p>
+                        <p class="university">University of Agriculture Faisalabad, Pakistan</p>
+                    </div>
+                </div>
+
+                <!-- Member 50: Iqra Faisal -->
+                <div class="team-card animate-on-scroll" data-department="event-organizing">
+                    <div class="team-img-container">
+                        <img src="team_images/iqra_faisal.png" alt="Iqra Faisal" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Iqra+Faisal&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Iqra Faisal</h3>
+                        <p class="role">Email Manager</p>
+                        <p class="university">Quid-I-Azam University, Islamabad</p>
+                    </div>
+                </div>
+
+                <!-- Member 51: Yusra -->
+                <div class="team-card animate-on-scroll" data-department="event-organizing">
+                    <div class="team-img-container">
+                        <img src="team_images/yusra.png" alt="Yusra" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Yusra&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Yusra</h3>
+                        <p class="role">Academic Coordinator</p>
+                        <p class="university">Fatima Jinnah Woman University</p>
+                    </div>
+                </div>
+
+                <!-- Member 52: Hira Khalid -->
+                <div class="team-card animate-on-scroll" data-department="global-lead-ambassador">
+                    <div class="team-img-container">
+                        <img src="team_images/hira_khalid.png" alt="Hira Khalid" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Hira+Khalid&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Hira Khalid</h3>
+                        <p class="role">Lead Ambassador</p>
+                        <p class="university">Liaqat University of Health and Medical Sciences</p>
+                    </div>
+                </div>
+
+                <!-- Member 53: Asma Ahmed -->
+                <div class="team-card animate-on-scroll" data-department="global-lead-ambassador">
+                    <div class="team-img-container">
+                        <img src="team_images/asma_ahmed.png" alt="Asma Ahmed" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Asma+Ahmed&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Asma Ahmed</h3>
+                        <p class="role">Lead Ambassador</p>
+                        <p class="university">Quid-I-Azam University, Islamabad, Pakistan</p>
+                    </div>
+                </div>
+
+                <!-- Member 54: Zahra Batool -->
+                <div class="team-card animate-on-scroll" data-department="global-lead-ambassador">
+                    <div class="team-img-container">
+                        <img src="team_images/zahra_batool.png" alt="Zahra Batool" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Zahra+Batool&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Zahra Batool</h3>
+                        <p class="role">Lead Ambassador</p>
+                        <p class="university">University of Lahore</p>
+                    </div>
+                </div>
+
+                <!-- Member 55: Maryam Hayat -->
+                <div class="team-card animate-on-scroll" data-department="global-lead-ambassador">
+                    <div class="team-img-container">
+                        <img src="team_images/maryam_hayat.png" alt="Maryam Hayat" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Maryam+Hayat&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Maryam Hayat</h3>
+                        <p class="role">Lead Ambassador</p>
+                        <p class="university">Bahaudin Zakriya University, Multan</p>
+                    </div>
+                </div>
+
+                <!-- Member 56: Eman Tariq -->
+                <div class="team-card animate-on-scroll" data-department="global-lead-ambassador">
+                    <div class="team-img-container">
+                        <img src="team_images/eman_tariq.png" alt="Eman Tariq" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Eman+Tariq&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Eman Tariq</h3>
+                        <p class="role">Lead Ambassador</p>
+                        <p class="university">Fatima Jinnah Woman University, Rawalpindi</p>
+                    </div>
+                </div>
+
+                <!-- Member 57: Adil Rasool -->
+                <div class="team-card animate-on-scroll" data-department="global-lead-ambassador">
+                    <div class="team-img-container">
+                        <img src="team_images/adil_rasool.png" alt="Adil Rasool" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Adil+Rasool&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Adil Rasool</h3>
+                        <p class="role">Lead Ambassador</p>
+                        <p class="university">University of Agriculture Faisalabad, Pakistan</p>
+                    </div>
+                </div>
+
+                <!-- Member 58: Ibrahim Buhari -->
+                <div class="team-card animate-on-scroll" data-department="global-lead-ambassador">
+                    <div class="team-img-container">
+                        <img src="team_images/ibrahim_buhari.png" alt="Ibrahim Buhari" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Ibrahim+Buhari&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Ibrahim Buhari</h3>
+                        <p class="role">Nigeria International Coordinator</p>
+                    </div>
+                </div>
+
+                <!-- Member 59: Zanooja Fatima -->
+                <div class="team-card animate-on-scroll" data-department="global-lead-ambassador">
+                    <div class="team-img-container">
+                        <img src="team_images/zanooja_fatima.png" alt="Zanooja Fatima" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Zanooja+Fatima&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Zanooja Fatima</h3>
+                        <p class="role">Siri Lanka Coordinator</p>
+                        <p class="university">The Punjab University</p>
+                    </div>
+                </div>
+
+                <!-- Member 60: Ibrahim Zakari Ubale -->
+                <div class="team-card animate-on-scroll" data-department="global-lead-ambassador">
+                    <div class="team-img-container">
+                        <img src="team_images/ibrahim_zakari.png" alt="Ibrahim Zakari Ubale" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Ibrahim+Zakari&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Ibrahim Zakari Ubale</h3>
+                        <p class="role">Lead Ambassador</p>
+                        <p class="university">Federal Dutse University, Nigeria</p>
+                    </div>
+                </div>
+
+                <!-- Member 61: Mujahid Khan -->
+                <div class="team-card animate-on-scroll" data-department="global-lead-ambassador">
+                    <div class="team-img-container">
+                        <img src="team_images/mujahid_khan.png" alt="Mujahid Khan" class="team-img"
+                            onerror="this.src='https://ui-avatars.com/api/?name=Mujahid+Khan&background=2ecc71&color=fff&size=200'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Mujahid Khan</h3>
+                        <p class="role">Lead Ambassador</p>
+                        <p class="university">University of Kohat, KPK, Pakistan</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -175,6 +912,46 @@
 
             document.querySelectorAll('.animate-on-scroll').forEach(el => {
                 observer.observe(el);
+            });
+
+            // Filter Functionality
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const teamCards = document.querySelectorAll('.team-card');
+
+            function applyFilter(filterValue) {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                const activeBtn = document.querySelector(`.filter-btn[data-filter="${filterValue}"]`);
+                if (activeBtn) activeBtn.classList.add('active');
+
+                teamCards.forEach(card => {
+                    if (filterValue === 'all' || card.getAttribute('data-department') === filterValue) {
+                        card.style.display = 'block';
+                        card.style.animation = 'none';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                            card.style.position = 'relative';
+                        }, 50);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 400);
+                    }
+                });
+            }
+
+            // Restore saved filter on page load
+            const savedFilter = localStorage.getItem('vnias_active_filter') || 'all';
+            applyFilter(savedFilter);
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const filterValue = btn.getAttribute('data-filter');
+                    localStorage.setItem('vnias_active_filter', filterValue);
+                    applyFilter(filterValue);
+                });
             });
         });
     </script>
