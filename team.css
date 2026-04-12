@@ -186,3 +186,29 @@
         padding: 0 20px;
     }
 }
+
+/* Specific Centered Layout (Centers the last row, 5 columns by default) */
+.team-grid.centered-layout {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+}
+
+.team-grid.centered-layout .team-card {
+    flex: 0 1 240px; /* Standard 5-column width */
+}
+
+/* Specific 4-Column Force (Secretariat and IT) */
+.team-grid.force-4-col {
+    max-width: 1300px; /* Constrain grid to ensure 5 cards cannot fit */
+}
+
+.team-grid.force-4-col .team-card {
+    flex: 0 1 300px; /* Wider cards to enforce the 4-column wrap */
+}
+
+/* Specific Image Adjustments */
+.sajia-img {
+    object-position: 50% 10% !important; /* Move crop UP to show more of the head */
+}
