@@ -33,14 +33,13 @@
       </div>
 
       <nav class="menu animate__animated animate__fadeInRight">
-        <a href="#home" class="active"><i class="fas fa-home"></i> HOME</a>
-        <a href="#collaborations"><i class="fas fa-handshake"></i> COLLABORATIONS</a>
-        <a href="#career"><i class="fas fa-briefcase"></i> CAREER</a>
-        <a href="activities.html"><i class="fas fa-calendar-alt"></i> ACTIVITIES</a>
-        <a href="team.html"><i class="fas fa-users"></i> VNIAS Units</a>
-        <a href="index.html#contact"><i class="fas fa-envelope"></i> CONTACT</a>
-        <a href="login.html" class="admin-link"><i class="fas fa-lock"></i> ADMIN</a>
-      </nav>
+         <a href="#home" class="active"><i class="fas fa-home"></i> HOME</a>
+         <a href="#collaborations"><i class="fas fa-handshake"></i> COLLABORATIONS</a>
+         <a href="#career"><i class="fas fa-briefcase"></i> CAREER</a>
+         <a href="activities.html"><i class="fas fa-calendar-alt"></i> ACTIVITIES</a>
+         <a href="team.html"><i class="fas fa-users"></i> VNIAS Units</a>
+         <a href="index.html#contact"><i class="fas fa-envelope"></i> CONTACT</a>
+       </nav>
     </div>
   </header>
 
@@ -55,15 +54,14 @@
       <span class="close-btn" onclick="closeDrawer()">×</span>
     </div>
     <div class="drawer-content">
-      <a href="#home" onclick="closeDrawer()" class="active"><i class="fas fa-home"></i> HOME</a>
-      <a href="#mission" onclick="closeDrawer()"><i class="fas fa-rocket"></i> MISSION</a>
-      <a href="#collaborations" onclick="closeDrawer()"><i class="fas fa-handshake"></i> COLLABORATIONS</a>
-      <a href="#career" onclick="closeDrawer()"><i class="fas fa-briefcase"></i> CAREER</a>
-      <a href="activities.html" onclick="closeDrawer()"><i class="fas fa-calendar-alt"></i> ACTIVITIES</a>
-      <a href="team.html" onclick="closeDrawer()"><i class="fas fa-users"></i> VNIAS Units</a>
-      <a href="#contact" onclick="closeDrawer()"><i class="fas fa-envelope"></i> CONTACT</a>
-      <a href="login.html" onclick="closeDrawer()"><i class="fas fa-lock"></i> ADMIN</a>
-    </div>
+       <a href="#home" onclick="closeDrawer()" class="active"><i class="fas fa-home"></i> HOME</a>
+       <a href="#mission" onclick="closeDrawer()"><i class="fas fa-rocket"></i> MISSION</a>
+       <a href="#collaborations" onclick="closeDrawer()"><i class="fas fa-handshake"></i> COLLABORATIONS</a>
+       <a href="#career" onclick="closeDrawer()"><i class="fas fa-briefcase"></i> CAREER</a>
+       <a href="activities.html" onclick="closeDrawer()"><i class="fas fa-calendar-alt"></i> ACTIVITIES</a>
+       <a href="team.html" onclick="closeDrawer()"><i class="fas fa-users"></i> VNIAS Units</a>
+       <a href="#contact" onclick="closeDrawer()"><i class="fas fa-envelope"></i> CONTACT</a>
+     </div>
   </div>
 
   <!-- PARALLAX HERO SECTION -->
@@ -536,10 +534,25 @@
                 <div class="input-focus-effect"></div>
               </div>
 
-              <button type="submit" class="submit-btn-modern">
-                <span>Send Message</span>
-                <i class="fas fa-paper-plane"></i>
-              </button>
+               <div class="form-actions">
+                 <button type="submit" class="submit-btn-modern" id="contactSubmitBtn">
+                   <span class="btn-content">
+                     <span class="btn-text">Send Message</span>
+                     <i class="fas fa-paper-plane"></i>
+                   </span>
+                   <span class="btn-loading hidden">
+                     <svg class="animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24">
+                       <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                       <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                     </svg>
+                     <span>Sending...</span>
+                   </span>
+                 </button>
+                 <button type="button" class="clear-btn-modern" onclick="document.getElementById('contactForm').reset()">
+                   <i class="fas fa-rotate-left"></i>
+                   <span>Clear</span>
+                 </button>
+               </div>
 
               <p style="text-align: center; margin-top: 20px; color: #718096; font-size: 0.85rem;">
                 <i class="fas fa-lock" style="color: #2ecc71;"></i>

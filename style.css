@@ -1810,24 +1810,32 @@ body {
   width: 90%;
 }
 
+/* Modern Contact Form Buttons */
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 28px;
+}
+
 .submit-btn-modern {
-  width: 100%;
-  padding: 18px 30px;
-  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  flex: 2;
+  padding: 18px 32px;
+  background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
   color: white;
   border: none;
-  border-radius: 16px;
-  font-size: 1.1rem;
+  border-radius: 14px;
+  font-size: 1.05rem;
   font-weight: 700;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 12px;
-  transition: all 0.4s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
-  box-shadow: 0 15px 30px rgba(46, 204, 113, 0.3);
+  box-shadow: 0 12px 28px rgba(46, 204, 113, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  letter-spacing: 0.5px;
 }
 
 .submit-btn-modern::before {
@@ -1837,30 +1845,139 @@ body {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-  transition: left 0.6s ease;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+  transition: left 0.5s ease;
 }
 
-.submit-btn-modern:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 25px 45px rgba(46, 204, 113, 0.4);
+.submit-btn-modern:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 38px rgba(46, 204, 113, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
-.submit-btn-modern:hover::before {
+.submit-btn-modern:hover:not(:disabled)::before {
   left: 100%;
 }
 
+.submit-btn-modern:active:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(46, 204, 113, 0.3);
+}
+
+.submit-btn-modern:disabled {
+  opacity: 0.85;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.submit-btn-modern .btn-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.submit-btn-modern .btn-loading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.submit-btn-modern .btn-loading.hidden,
+.submit-btn-modern .btn-content.hidden {
+  display: none;
+}
+
 .submit-btn-modern i {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   transition: transform 0.3s ease;
 }
 
-.submit-btn-modern:hover i {
-  transform: translateX(8px);
+.submit-btn-modern:hover:not(:disabled) i {
+  transform: translateX(6px);
 }
 
-/* Responsive Design */
-@media (max-width: 1024px) {
+.submit-btn-modern svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Clear Button */
+.clear-btn-modern {
+  flex: 1;
+  padding: 18px 24px;
+  background: #f8fafc;
+  color: #64748b;
+  border: 2px solid #e2e8f0;
+  border-radius: 14px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.clear-btn-modern:hover {
+  background: #fee2e2;
+  border-color: #fecaca;
+  color: #dc2626;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(220, 38, 38, 0.15);
+}
+
+.clear-btn-modern:active {
+  transform: translateY(0);
+}
+
+.clear-btn-modern i {
+  font-size: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.clear-btn-modern:hover i {
+  transform: rotate(-180deg);
+}
+
+/* Button Focus States */
+.submit-btn-modern:focus-visible,
+.clear-btn-modern:focus-visible {
+  outline: 3px solid rgba(46, 204, 113, 0.3);
+  outline-offset: 2px;
+}
+
+.clear-btn-modern:focus-visible {
+  outline-color: rgba(220, 38, 38, 0.3);
+}
+
+
+/* Responsive Button Layout */
+@media (max-width: 640px) {
+  .form-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .submit-btn-modern,
+  .clear-btn-modern {
+    flex: none;
+    width: 100%;
+    padding: 16px 24px;
+    font-size: 1rem;
+  }
+}
+
+/* Button States for Small Screens */
+@media (hover: none) {
+  .submit-btn-modern:hover:not(:disabled) {
+    transform: none;
+    box-shadow: 0 12px 28px rgba(46, 204, 113, 0.35);
+  }
+  
+  .clear-btn-modern:hover {
+    transform: none;
+  }
+}
   .contact-content {
     grid-template-columns: 1fr;
     gap: 40px;

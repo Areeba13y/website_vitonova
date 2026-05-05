@@ -170,25 +170,29 @@ function initContactForm() {
       };
 
       const submitBtn = this.querySelector('.submit-btn-modern');
-      const originalText = submitBtn.innerHTML;
+      const btnContent = submitBtn.querySelector('.btn-content');
+      const btnLoading = submitBtn.querySelector('.btn-loading');
 
-      submitBtn.innerHTML = '<span>Sending...</span><i class="fas fa-spinner fa-spin"></i>';
+      // Show loading state
       submitBtn.disabled = true;
+      btnContent.classList.add('hidden');
+      btnLoading.classList.remove('hidden');
 
       try {
         const res = await window.VitaNovaApi.postJson('/contact', payload);
-        submitBtn.innerHTML = '<span>Message Sent!</span><i class="fas fa-check"></i>';
-        submitBtn.style.background = '#27ae60';
-        window.VitaNovaUI?.toastSuccess(res.message || 'Message sent.');
+        btnLoading.classList.add('hidden');
+        btnContent.classList.remove('hidden');
+        window.VitaNovaUI?.toastSuccess(res.message || 'Message sent successfully!');
+        form.reset();
+        
+        // Optional: scroll to success message or show inline success
         setTimeout(() => {
-          submitBtn.innerHTML = originalText;
-          submitBtn.style.background = '';
           submitBtn.disabled = false;
-          form.reset();
         }, 2000);
       } catch (error) {
-        submitBtn.innerHTML = originalText;
         submitBtn.disabled = false;
+        btnLoading.classList.add('hidden');
+        btnContent.classList.remove('hidden');
         const msg = error?.data?.message || error.message || 'Unable to send message.';
         window.VitaNovaUI?.toastError(msg);
       }
