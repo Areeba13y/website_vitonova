@@ -3,29 +3,60 @@ document.addEventListener('DOMContentLoaded', async () => {
     const grid = document.querySelector('.activities-grid');
     if (!grid) return;
 
+<<<<<<< HEAD
+=======
+<<<<<<< Updated upstream
+    // Add simple animation delay for grid items
+    const cards = document.querySelectorAll('.event-card');
+    cards.forEach((card, index) => {
+        card.style.animationDelay = `${index * 0.1}s`;
+        card.classList.add('animate__animated', 'animate__fadeInUp');
+    });
+=======
+>>>>>>> fahimullah
     try {
         const data = await window.VitaNovaApi.get('/events/upcoming');
         const events = data.events || [];
 
         if (!events.length) return;
 
+<<<<<<< HEAD
         grid.innerHTML = events.map((event) => `
             <div class="event-card" data-event-id="${event.id}">
                 <div class="event-image">
                     <img src="${escapeHtml(event.image_url)}" alt="${escapeHtml(event.title)}">
+=======
+        grid.innerHTML = events
+          .map(
+            (event) => `
+            <div class="event-card" data-event-id="${event.id}">
+                <div class="event-image">
+                    <img src="${escapeHtml(event.image)}" alt="${escapeHtml(event.title)}">
+>>>>>>> fahimullah
                 </div>
                 <div class="event-details">
                     <span class="event-category">${escapeHtml(event.category)}</span>
                     <h3>${escapeHtml(event.title)}</h3>
                     <p>${escapeHtml(event.description)}</p>
                     <div class="event-meta">
+<<<<<<< HEAD
                         <span><i class="fas fa-clock"></i> Submission: ${escapeHtml(event.submission_deadline || '-')}</span>
                         <span><i class="fas fa-calendar-alt"></i> Event: ${escapeHtml(event.event_date || '-')}</span>
+=======
+                        <span><i class="fas fa-clock"></i> Submission: ${escapeHtml(event.submission_deadline || "-")}</span>
+                        <span><i class="fas fa-calendar-alt"></i> Event: ${escapeHtml(event.event_date || "-")}</span>
+>>>>>>> fahimullah
                     </div>
                     <button type="button" class="btn-event" onclick="openEventRegisterModal(${event.id}, '${encodeURIComponent(event.title)}')">Register Now <i class="fas fa-arrow-right"></i></button>
                 </div>
             </div>
+<<<<<<< HEAD
         `).join('');
+=======
+        `,
+          )
+          .join("");
+>>>>>>> fahimullah
 
         appendRegisterModal();
 
@@ -37,6 +68,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     } catch (error) {
         console.error('Unable to load events:', error);
     }
+<<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
+>>>>>>> fahimullah
 });
 
 function appendRegisterModal() {
