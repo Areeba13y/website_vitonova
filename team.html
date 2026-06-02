@@ -78,7 +78,7 @@
     <section class="team-section">
         <div class="container">
             <!-- Team Filter Tabs -->
-            <div class="team-filters animate__animated animate__fadeInUp">
+            <div class="team-filters animate__animated animate__fadeInUp" id="teamFilters">
                 <button class="filter-btn active" data-filter="all">All Units</button>
             </div>
 
@@ -102,26 +102,41 @@
     <script src="api-client.js"></script>
     <script src="script.js"></script>
     <script>
-        // Unit name to filter key mapping - case-insensitive for robustness
+        // Unit name to filter key mapping
         const UNIT_FILTER_MAP = {
             'leadership unit': 'leadership',
             'secretariat unit': 'secretariat',
             'media relations unit': 'media-relations',
             'it unit': 'it',
-            'policy & research unit': 'policy-research',
             'policy and research unit': 'policy-research',
             'content writing unit': 'content-writing',
             'social media handling unit': 'social-media',
             'scholarship guidance unit': 'scholarship-guidance',
-            'event organizing & planning team': 'event-organizing',
             'event organizing and planning team': 'event-organizing',
             'global lead ambassador unit': 'global-lead-ambassador'
         };
 
-        // Get filter key from unit name (case-insensitive, handles & and and)
+        function normalizeUnitName(unitName) {
+            return String(unitName || '')
+                .toLowerCase()
+                .replace(/&/g, ' and ')
+                .replace(/[^a-z0-9]+/g, ' ')
+                .trim()
+                .replace(/\s+/g, ' ');
+        }
+
+        function slugifyUnitName(unitName) {
+            return String(unitName || '')
+                .toLowerCase()
+                .trim()
+                .replace(/[^a-z0-9]+/g, '-')
+                .replace(/^-+|-+$/g, '') || 'unknown';
+        }
+
+        // Get filter key from unit name (known unit map first, slug fallback)
         function getFilterKey(unitName) {
-            const normalized = unitName.toLowerCase().replace(/&/g, 'and').trim();
-            return UNIT_FILTER_MAP[normalized] || null;
+            const normalized = normalizeUnitName(unitName);
+            return UNIT_FILTER_MAP[normalized] || slugifyUnitName(unitName);
         }
 
         // Get display name for unit (capitalize properly)
@@ -163,13 +178,18 @@
         // Create a team card HTML element
         function createTeamCard(user, unitName) {
             const card = document.createElement('div');
-            const filterKey = getFilterKey(unitName) || 'unknown';
+            const filterKey = getFilterKey(unitName);
             
             card.className = 'team-card animate-on-scroll';
             card.setAttribute('data-department', filterKey);
             
-            // Generate image path with fallback
-            const imgPath = getMemberImagePath(unitName, user.name);
+            // Prefer API image, then local team_images, then generated avatar.
+            const localImgPath = getMemberImagePath(unitName, user.name);
+            const apiImgPath = user.profile_picture_url
+                || (user.profile_picture
+                    ? `http://localhost/vitonova/backend_vitonova/public/${String(user.profile_picture).replace(/^\/+/, '')}`
+                    : '');
+            const imgPath = apiImgPath || localImgPath;
             const fallbackUrl = getAvatarUrl(user.name);
             
             // Use details as university/affiliation if available
@@ -178,7 +198,7 @@
             card.innerHTML = `
                 <div class="team-img-container">
                     <img src="${imgPath}" alt="${user.name}" class="team-img"
-                        onerror="this.onerror=null; this.src='${fallbackUrl}'">
+                        onerror="if (!this.dataset.fallbackStep) { this.dataset.fallbackStep='local'; this.src='${localImgPath}'; return; } this.onerror=null; this.src='${fallbackUrl}'">
                 </div>
                 <div class="team-info">
                     <h3>${user.name}</h3>
@@ -211,7 +231,6 @@
             // Create a button for each unit
             units.forEach((unitName, index) => {
                 const filterKey = getFilterKey(unitName);
-                if (!filterKey) return; // Skip units we can't map
 
                 const btn = document.createElement('button');
                 btn.className = 'filter-btn';
@@ -310,7 +329,7 @@
                 const filteredGroups = data.groups.filter(group => {
                     if (group.unit_name === 'Unassigned') return false;
                     const filterKey = getFilterKey(group.unit_name);
-                    if (filterKey && !unitNames.includes(filterKey)) {
+                    if (!unitNames.includes(filterKey)) {
                         unitNames.push(filterKey);
                     }
                     return true;
