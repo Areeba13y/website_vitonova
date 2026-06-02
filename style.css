@@ -1503,9 +1503,11 @@ body {
   font-size: 2.8rem;
   margin-bottom: 20px;
   position: relative;
-  display: inline-block;
-  left: 50%;
-  transform: translateX(-50%);
+  display: block;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 .contact-section .section-title::after {
@@ -1522,9 +1524,21 @@ body {
 
 .contact-content {
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
+  grid-template-columns: minmax(320px, 0.95fr) minmax(420px, 1.05fr);
   gap: 40px;
   margin-top: 50px;
+  align-items: start;
+}
+
+.contact-form-wrapper {
+  max-width: 760px;
+  width: 100%;
+  justify-self: start;
+}
+
+.contact-info {
+  max-width: 560px;
+  width: 100%;
 }
 
 /* LEFT SIDE - Contact Information Cards */
@@ -1978,6 +1992,8 @@ body {
     transform: none;
   }
 }
+
+@media (max-width: 992px) {
   .contact-content {
     grid-template-columns: 1fr;
     gap: 40px;
