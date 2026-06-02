@@ -159,81 +159,30 @@ function initMagneticButtons() {
 function initContactForm() {
   const form = document.getElementById('contactForm');
   if (form) {
-    form.addEventListener('submit', async function (e) {
+    form.addEventListener('submit', function (e) {
       e.preventDefault();
 
-      const inputs = this.querySelectorAll('input, textarea');
-      const payload = {
-        name: inputs[0] ? inputs[0].value.trim() : '',
-        email: inputs[1] ? inputs[1].value.trim() : '',
-        message: inputs[2] ? inputs[2].value.trim() : '',
-      };
+      // Get form data
+      const formData = new FormData(this);
+      const data = Object.fromEntries(formData);
 
-      const submitBtn = this.querySelector('.submit-btn-modern');
-      const btnContent = submitBtn.querySelector('.btn-content');
-      const btnLoading = submitBtn.querySelector('.btn-loading');
+      // Show success message
+      const submitBtn = this.querySelector('.submit-btn');
+      const originalText = submitBtn.innerHTML;
 
-      // Show loading state
-      submitBtn.disabled = true;
-      btnContent.classList.add('hidden');
-      btnLoading.classList.remove('hidden');
+      submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+      submitBtn.style.background = '#27ae60';
 
-      try {
-        const res = await window.VitaNovaApi.postJson('/contact', payload);
-        btnLoading.classList.add('hidden');
-        btnContent.classList.remove('hidden');
-        window.VitaNovaUI?.toastSuccess(res.message || 'Message sent successfully!');
+      // Reset after 3 seconds
+      setTimeout(() => {
+        submitBtn.innerHTML = originalText;
+        submitBtn.style.background = '';
         form.reset();
-        
-        // Optional: scroll to success message or show inline success
-        setTimeout(() => {
-          submitBtn.disabled = false;
-        }, 2000);
-      } catch (error) {
-        submitBtn.disabled = false;
-        btnLoading.classList.add('hidden');
-        btnContent.classList.remove('hidden');
-        const msg = error?.data?.message || error.message || 'Unable to send message.';
-        window.VitaNovaUI?.toastError(msg);
-      }
+      }, 3000);
+
+      console.log('Form submitted:', data);
     });
   }
-}
-
-async function loadHomepageCollaborations() {
-  const track = document.getElementById('sliderTrack');
-  if (!track || !window.VitaNovaApi) return;
-
-  try {
-    const data = await window.VitaNovaApi.get('/collaborations');
-    const items = data.collaborations || [];
-    if (!items.length) return;
-
-    track.innerHTML = items.map((item, index) => `
-      <div class="slider-card">
-        <div class="card-circle">
-          <img src="${escapeHtml(item.logo_url)}" alt="${escapeHtml(item.organization_name)}">
-          <div class="circle-number">${String(index + 1).padStart(2, '0')}</div>
-        </div>
-        <div class="card-content">
-          <h3>${escapeHtml(item.organization_name)}</h3>
-          <p>${escapeHtml(item.subtitle || '')}</p>
-          <a href="collaboration.html#collab-${item.id}" class="card-link">Learn More</a>
-        </div>
-      </div>
-    `).join('');
-  } catch (error) {
-    console.error('Unable to load collaborations:', error);
-  }
-}
-
-function escapeHtml(value) {
-  return String(value || '')
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;');
 }
 
 // Parallax effect
@@ -307,7 +256,6 @@ document.addEventListener('DOMContentLoaded', function () {
   initMagneticButtons();
   initContactForm();
   initParallax();
-  loadHomepageCollaborations();
 
   // Add loading animation
   document.body.style.opacity = '0';
