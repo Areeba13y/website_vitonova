@@ -240,6 +240,83 @@ images.forEach(img => {
   });
 });
 
+function escapeHtml(value) {
+  return String(value || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
+function resolveLogoUrl(value) {
+  const raw = String(value || '').trim();
+  if (!raw) {
+    return 'logos/main_logo.jpeg';
+  }
+
+  if (/^https?:\/\//i.test(raw)) {
+    return raw;
+  }
+
+  if (raw.startsWith('/')) {
+    return `http://localhost/vitonova/backend_vitonova${raw}`;
+  }
+
+  if (raw.startsWith('storage/')) {
+    return `http://localhost/vitonova/backend_vitonova/${raw}`;
+  }
+
+  return raw;
+}
+
+async function loadHomepageCollaborations() {
+  const sliderTrack = document.getElementById('sliderTrack');
+  if (!sliderTrack) {
+    return;
+  }
+
+  if (!window.VitaNovaApi) {
+    sliderTrack.innerHTML = '<p style="text-align:center;color:#ffd6d6;padding:20px;">Unable to load collaborations right now.</p>';
+    return;
+  }
+
+  try {
+    const data = await window.VitaNovaApi.get('/collaborations');
+    const items = data.collaborations || [];
+
+    if (!items.length) {
+      sliderTrack.innerHTML = '<p style="text-align:center;color:#d8f3dc;padding:20px;">No collaborations available right now.</p>';
+      return;
+    }
+
+    sliderTrack.innerHTML = items.map((item, index) => {
+      const organization = escapeHtml(item.organization_name || 'Organization');
+      const subtitle = escapeHtml(item.subtitle || item.description || '');
+      const logo = escapeHtml(resolveLogoUrl(item.logo_url));
+      const number = String(index + 1).padStart(2, '0');
+      const link = `collaboration.html#collab-${item.id}`;
+
+      return `
+        <div class="slider-card">
+          <div class="card-circle">
+            <img src="${logo}" alt="${organization} Logo" onerror="this.src='logos/main_logo.jpeg'">
+            <div class="circle-number">${number}</div>
+          </div>
+          <div class="card-content">
+            <h3>${organization}</h3>
+            <p>${subtitle}</p>
+            <a href="${link}" class="card-link">Learn More</a>
+          </div>
+        </div>
+      `;
+    }).join('');
+  } catch (error) {
+    console.error('Homepage collaborations load error:', error);
+    sliderTrack.innerHTML = '<p style="text-align:center;color:#ffd6d6;padding:20px;">Failed to load collaborations from backend.</p>';
+  }
+}
+
 // Initialize everything when page loads
 document.addEventListener('DOMContentLoaded', function () {
   // Initialize components
@@ -256,6 +333,7 @@ document.addEventListener('DOMContentLoaded', function () {
   initMagneticButtons();
   initContactForm();
   initParallax();
+  loadHomepageCollaborations();
 
   // Add loading animation
   document.body.style.opacity = '0';
