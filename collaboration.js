@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             return `
                 <div id="collab-${item.id}" class="detail-card animated">
                     <div class="detail-icon">
-                        <img src="${escapeHtml(item.logo_url)}" alt="${escapeHtml(item.organization_name)} Logo" class="detail-logo" onerror="this.src='logos/main_logo.jpeg'">
+                        <img src="${escapeHtml(typeof resolveLogoUrl === 'function' ? resolveLogoUrl(item.logo_url) : item.logo_url)}" alt="${escapeHtml(item.organization_name)} Logo" class="detail-logo" onerror="this.src='logos/main_logo.jpeg'">
                     </div>
                     <div class="detail-info">
                         <h2>${escapeHtml(item.organization_name)}</h2>

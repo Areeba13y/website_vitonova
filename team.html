@@ -183,22 +183,23 @@
             card.className = 'team-card animate-on-scroll';
             card.setAttribute('data-department', filterKey);
             
-            // Prefer API image, then local team_images, then generated avatar.
-            const localImgPath = getMemberImagePath(unitName, user.name);
-            const apiImgPath = user.profile_picture_url
-                || (user.profile_picture
-                    ? `http://localhost/vitonova/backend_vitonova/public/${String(user.profile_picture).replace(/^\/+/, '')}`
-                    : '');
-            const imgPath = apiImgPath || localImgPath;
+            // Prefer API image, then construct URL from profile_picture, then avatar fallback
+            const apiImgPath = user.profile_picture_url || '';
+            const storageImgPath = user.profile_picture
+                ? `https://backend.vnias.org/${String(user.profile_picture).replace(/^\/+/, '')}`
+                : '';
+            const imgPath = apiImgPath || storageImgPath || getAvatarUrl(user.name);
             const fallbackUrl = getAvatarUrl(user.name);
+
+            // Use onerror to handle any broken link; fallback to avatar if needed
+            const onErrorHandler = `this.onerror=null; this.src='${fallbackUrl}'`;
             
             // Use details as university/affiliation if available
             const affiliation = user.details || user.designation || '';
             
             card.innerHTML = `
                 <div class="team-img-container">
-                    <img src="${imgPath}" alt="${user.name}" class="team-img"
-                        onerror="if (!this.dataset.fallbackStep) { this.dataset.fallbackStep='local'; this.src='${localImgPath}'; return; } this.onerror=null; this.src='${fallbackUrl}'">
+                    <img src="${imgPath}" alt="${user.name}" class="team-img" onerror="${onErrorHandler}">
                 </div>
                 <div class="team-info">
                     <h3>${user.name}</h3>

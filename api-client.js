@@ -1,5 +1,5 @@
 window.VitaNovaApi = (function () {
-  const BASE_URL = "http://localhost/vitonova/backend_vitonova/api";
+  const BASE_URL = "https://backend.vnias.org/api";
   const TOKEN = "2|58SdxumWXB8Ggwfgvbcg94lGubnvyMpTiFznuTEw105a7e56";
 
   async function request(path, options = {}) {

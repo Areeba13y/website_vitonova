@@ -73,11 +73,11 @@ function resolveEventImage(value) {
     }
 
     if (raw.startsWith('/')) {
-        return `http://localhost/vitonova/backend_vitonova${raw}`;
+        return `https://backend.vnias.org${raw}`;
     }
 
     if (raw.startsWith('storage/')) {
-        return `http://localhost/vitonova/backend_vitonova/${raw}`;
+        return `https://backend.vnias.org/${raw}`;
     }
 
     return raw;
