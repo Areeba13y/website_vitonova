@@ -292,7 +292,7 @@ async function loadHomepageCollaborations() {
 
     sliderTrack.innerHTML = items.map((item, index) => {
       const organization = escapeHtml(item.organization_name || 'Organization');
-      const subtitle = escapeHtml(item.subtitle || item.description || '');
+      const subtitle = escapeHtml(item.subtitle || "");
       const logo = escapeHtml(resolveLogoUrl(item.logo_url));
       const number = String(index + 1).padStart(2, '0');
       const link = `collaboration.html#collab-${item.id}`;
