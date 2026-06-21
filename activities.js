@@ -1,35 +1,40 @@
 // Activities Page Specific Scripts
-document.addEventListener('DOMContentLoaded', async () => {
-    const grid = document.querySelector('.activities-grid');
-    if (!grid) return;
+document.addEventListener("DOMContentLoaded", async () => {
+  const grid = document.querySelector(".activities-grid");
+  if (!grid) return;
 
-    if (!window.VitaNovaApi) {
-        grid.innerHTML = '<p style="text-align:center;color:#b42318;padding:20px;">API client not loaded. Please refresh the page.</p>';
-        return;
+  if (!window.VitaNovaApi) {
+    grid.innerHTML =
+      '<p style="text-align:center;color:#b42318;padding:20px;">API client not loaded. Please refresh the page.</p>';
+    return;
+  }
+
+  try {
+    const data = await window.VitaNovaApi.get("/events/upcoming");
+    const events = data.events || [];
+
+    if (!events.length) {
+      grid.innerHTML =
+        '<p style="text-align:center;color:#3f3f46;padding:20px;">No upcoming activities available right now.</p>';
+      return;
     }
 
-    try {
-        const data = await window.VitaNovaApi.get('/events/upcoming');
-        const events = data.events || [];
+    grid.innerHTML = events
+      .map((event) => {
+        const title = escapeHtml(event.title || "Event");
+        const category = escapeHtml(event.category || "Activity");
+        const description = escapeHtml(event.description || "");
+        const imageUrl = escapeHtml(
+          resolveEventImage(event.image_url || event.image),
+        );
 
-        if (!events.length) {
-            grid.innerHTML = '<p style="text-align:center;color:#3f3f46;padding:20px;">No upcoming activities available right now.</p>';
-            return;
-        }
+        // Format dates
+        const submission = formatDate(event.submission_deadline || "MOD");
+        const eventDate = formatDate(event.event_date || "-");
 
-        grid.innerHTML = events.map((event) => {
-            const title = escapeHtml(event.title || 'Event');
-            const category = escapeHtml(event.category || 'Activity');
-            const description = escapeHtml(event.description || '');
-            const imageUrl = escapeHtml(resolveEventImage(event.image_url || event.image));
-            
-            // Format dates
-            const submission = formatDate(event.submission_deadline || 'MOD');
-            const eventDate = formatDate(event.event_date || '-');
-            
-            const eventId = Number(event.id || 0);
+        const eventId = Number(event.id || 0);
 
-            return `
+        return `
                 <div class="event-card" data-event-id="${eventId}">
                     <div class="event-card-inner">
                         <div class="event-image">
@@ -47,23 +52,99 @@ document.addEventListener('DOMContentLoaded', async () => {
                                     <i class="fas fa-clock"></i> Last date of Reg: ${submission}
                                 </span>
                             </div>
-                            <button type="button" class="btn-event" onclick="openEventRegisterModal(${eventId}, '${encodeURIComponent(event.title || '')}')">
+                            <button type="button" class="btn-event" onclick="openEventRegisterModal(${eventId}, '${encodeURIComponent(event.title || "")}')">
                                 Register Now <i class="fas fa-arrow-right"></i>
                             </button>
                         </div>
                     </div>
                 </div>
             `;
-        }).join('');
-                            
-        appendRegisterModal();
-        applyCardAnimations();
-    } catch (error) {
-        console.error('Unable to load events:', error);
-        const reason = error?.data?.message || error?.message || 'Unable to load activities from backend.';
-        grid.innerHTML = `<p style="text-align:center;color:#b42318;padding:20px;">${escapeHtml(reason)}</p>`;
-    }
+      })
+      .join("");
+
+    appendRegisterModal();
+    applyCardAnimations();
+
+    // Load Previous Highlights after events
+    loadHighlights();
+  } catch (error) {
+    console.error("Unable to load events:", error);
+    const reason =
+      error?.data?.message ||
+      error?.message ||
+      "Unable to load activities from backend.";
+    grid.innerHTML = `<p style="text-align:center;color:#b42318;padding:20px;">${escapeHtml(reason)}</p>`;
+  }
 });
+
+// =============================================
+// FUNCTION TO LOAD PREVIOUS HIGHLIGHTS
+// =============================================
+async function loadHighlights() {
+  const container = document.getElementById("highlightsContainer");
+  if (!container) return;
+
+  try {
+    // Get the API base URL
+    const apiBase = window.VitaNovaApi?.baseURL || "https://backend.vnias.org";
+    const response = await fetch(`${apiBase}/api/highlights`);
+
+    if (!response.ok) {
+      throw new Error("Failed to fetch highlights");
+    }
+
+    const data = await response.json();
+
+    if (data.success && data.highlights && data.highlights.length > 0) {
+      // Show only first 3 highlights
+      const highlights = data.highlights.slice(0, 3);
+
+      container.innerHTML = highlights
+        .map((highlight, index) => {
+          const title = escapeHtml(highlight.title);
+          const imageUrl = highlight.image_url || "logos/main_logo.jpeg";
+          const url = highlight.url || "";
+
+          // If URL exists, make the card clickable
+          const cardWrapper = url
+            ? `<a href="${url}" target="_blank" class="highlight-card-link">`
+            : "";
+          const cardWrapperClose = url ? "</a>" : "";
+
+          return `
+                    ${cardWrapper}
+                    <div class="highlight-card animate__animated animate__fadeInUp" style="animation-delay: ${index * 0.15}s">
+                        <div class="highlight-image">
+                            <img src="${escapeHtml(imageUrl)}" alt="${title}" onerror="this.src='logos/main_logo.jpeg'">
+                            ${url ? '<div class="highlight-overlay"><i class="fab fa-linkedin"></i> View Post</div>' : ""}
+                        </div>
+                        <div class="highlight-content">
+                            <h3>${title}</h3>
+                            ${url ? '<span class="highlight-link-icon"><i class="fas fa-external-link-alt"></i></span>' : ""}
+                        </div>
+                    </div>
+                    ${cardWrapperClose}
+                `;
+        })
+        .join("");
+    } else {
+      container.innerHTML = `
+                <div style="grid-column: 1/-1; text-align: center; padding: 40px;">
+                    <i class="fas fa-star" style="font-size: 3rem; color: #ccc;"></i>
+                    <p style="margin-top: 10px; color: #999;">No highlights available yet.</p>
+                </div>
+            `;
+    }
+  } catch (error) {
+    console.error("Error loading highlights:", error);
+    container.innerHTML = `
+            <div style="grid-column: 1/-1; text-align: center; padding: 40px;">
+                <i class="fas fa-exclamation-triangle" style="font-size: 2rem; color: #f39c12;"></i>
+                <p style="margin-top: 10px; color: #666;">Unable to load highlights</p>
+            </div>
+        `;
+  }
+}
 
 // Function to format date from YYYY-MM-DD to DD-MM-YYYY
 function formatDate(dateString) {

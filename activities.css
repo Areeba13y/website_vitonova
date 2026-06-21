@@ -77,7 +77,8 @@
 .event-image img {
     width: 100%;
     height: 100%;
-    object-fit:fill;
+    -o-object-fit:fill;
+       object-fit:fill;
    
     transition: transform 0.5s ease;
     padding: 20px;
@@ -108,6 +109,8 @@
     background: rgba(46, 204, 113, 0.1);
     padding: 6px 14px;
     border-radius: 20px;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
     width: fit-content;
 }
 
@@ -201,6 +204,8 @@
     text-decoration: none;
     transition: all 0.3s ease;
     box-shadow: 0 8px 20px rgba(46, 204, 113, 0.25);
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
     width: fit-content;
     font-size: 15px;
     text-transform: uppercase;
@@ -306,7 +311,8 @@
     position: fixed;
     inset: 0;
     background: rgba(9, 19, 16, 0.7);
-    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+            backdrop-filter: blur(3px);
     z-index: 9999;
     overflow: auto;
     padding: 24px 14px;
@@ -474,6 +480,177 @@
     cursor: not-allowed;
 }
 
+
+
+
+
+/* ============================================= */
+/* PREVIOUS HIGHLIGHTS SECTION STYLES */
+/* ============================================= */
+.previous-highlights-section {
+    padding: 60px 0;
+    background: #f8f9fa;
+}
+
+.previous-highlights-section .section-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.previous-highlights-section .section-header h2 {
+    font-size: 2.5rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #0a3d2e;
+}
+
+.previous-highlights-section .section-header p {
+    color: #666;
+    font-size: 1.1rem;
+    margin-top: 8px;
+}
+
+.previous-highlights-section .section-divider {
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+/* Highlights Grid - 3 columns */
+.highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Highlight Card */
+.highlight-card-link {
+    text-decoration: none;
+    display: block;
+}
+
+.highlight-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+    cursor: pointer;
+}
+
+.highlight-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    border-color: rgba(46, 204, 113, 0.3);
+}
+
+.highlight-card .highlight-image {
+    height: 250px;
+    overflow: hidden;
+    background: #f8f9fa;
+    position: relative;
+}
+
+.highlight-card .highlight-image img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.highlight-card:hover .highlight-image img {
+    transform: scale(1.05);
+}
+
+/* Overlay for clickable cards */
+.highlight-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.highlight-overlay i {
+    margin-right: 8px;
+}
+
+.highlight-card:hover .highlight-overlay {
+    opacity: 1;
+}
+
+.highlight-card .highlight-content {
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.highlight-card .highlight-content h3 {
+    font-size: 1.1rem;
+    color: #0a3d2e;
+    font-weight: 600;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.highlight-link-icon {
+    display: inline-block;
+    margin-top: 8px;
+    color: #0077b5;
+    font-size: 0.9rem;
+}
+
+/* Responsive for Highlights */
+@media (max-width: 992px) {
+    .highlights-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .highlights-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .previous-highlights-section .section-header h2 {
+        font-size: 1.8rem;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media (max-width: 768px) {
     .event-form-grid {
         grid-template-columns: 1fr;
@@ -491,12 +668,26 @@
 
 /* Animation Classes */
 .animate__animated {
-    animation-duration: 0.8s;
-    animation-fill-mode: both;
+    -webkit-animation-duration: 0.8s;
+            animation-duration: 0.8s;
+    -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
 }
 
 .animate__fadeInUp {
-    animation-name: fadeInUp;
+    -webkit-animation-name: fadeInUp;
+            animation-name: fadeInUp;
+}
+
+@-webkit-keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 30px, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
 }
 
 @keyframes fadeInUp {
