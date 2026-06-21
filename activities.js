@@ -22,29 +22,40 @@ document.addEventListener('DOMContentLoaded', async () => {
             const category = escapeHtml(event.category || 'Activity');
             const description = escapeHtml(event.description || '');
             const imageUrl = escapeHtml(resolveEventImage(event.image_url || event.image));
-            const submission = escapeHtml(event.submission_deadline || '-');
-            const eventDate = escapeHtml(event.event_date || '-');
+            
+            // Format dates
+            const submission = formatDate(event.submission_deadline || 'MOD');
+            const eventDate = formatDate(event.event_date || '-');
+            
             const eventId = Number(event.id || 0);
 
             return `
                 <div class="event-card" data-event-id="${eventId}">
-                    <div class="event-image">
-                        <img src="${imageUrl}" alt="${title}" onerror="this.src='logos/main_logo.jpeg'">
-                    </div>
-                    <div class="event-details">
-                        <span class="event-category">${category}</span>
-                        <h3>${title}</h3>
-                        <p>${description}</p>
-                        <div class="event-meta">
-                            <span><i class="fas fa-clock"></i> Submission: ${submission}</span>
-                            <span><i class="fas fa-calendar-alt"></i> Event: ${eventDate}</span>
+                    <div class="event-card-inner">
+                        <div class="event-image">
+                            <img src="${imageUrl}" alt="${title}" onerror="this.src='logos/main_logo.jpeg'">
                         </div>
-                        <button type="button" class="btn-event" onclick="openEventRegisterModal(${eventId}, '${encodeURIComponent(event.title || '')}')">Register Now <i class="fas fa-arrow-right"></i></button>
+                        <div class="event-content">
+                            <span class="event-category">${category}</span>
+                            <h3 class="event-title">${title}</h3>
+                            <p class="event-description">${description}</p>
+                            <div class="event-meta">
+                                <span class="event-meta-item">
+                                    <i class="fas fa-calendar-alt"></i> Event date: ${eventDate}
+                                </span>
+                                <span class="event-meta-item">
+                                    <i class="fas fa-clock"></i> Last date of Reg: ${submission}
+                                </span>
+                            </div>
+                            <button type="button" class="btn-event" onclick="openEventRegisterModal(${eventId}, '${encodeURIComponent(event.title || '')}')">
+                                Register Now <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
             `;
         }).join('');
-
+                            
         appendRegisterModal();
         applyCardAnimations();
     } catch (error) {
@@ -53,6 +64,48 @@ document.addEventListener('DOMContentLoaded', async () => {
         grid.innerHTML = `<p style="text-align:center;color:#b42318;padding:20px;">${escapeHtml(reason)}</p>`;
     }
 });
+
+// Function to format date from YYYY-MM-DD to DD-MM-YYYY
+function formatDate(dateString) {
+    if (!dateString || dateString === '-' || dateString === 'MOD') {
+        return dateString || '-';
+    }
+    
+    try {
+        // If date is already in DD-MM-YYYY format, return as is
+        if (/^\d{2}-\d{2}-\d{4}$/.test(dateString)) {
+            return dateString;
+        }
+        
+        // Parse YYYY-MM-DD format
+        const parts = dateString.split('-');
+        if (parts.length === 3) {
+            const year = parts[0];
+            const month = parts[1];
+            const day = parts[2];
+            
+            // Validate if it's a valid date
+            if (year.length === 4 && month.length === 2 && day.length === 2) {
+                return `${day}-${month}-${year}`;
+            }
+        }
+        
+        // If format doesn't match, try creating a Date object
+        const date = new Date(dateString);
+        if (!isNaN(date.getTime())) {
+            const day = String(date.getDate()).padStart(2, '0');
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const year = date.getFullYear();
+            return `${day}-${month}-${year}`;
+        }
+        
+        // Return original if all parsing fails
+        return dateString;
+    } catch (error) {
+        console.warn('Error formatting date:', dateString, error);
+        return dateString;
+    }
+}
 
 function applyCardAnimations() {
     const cards = document.querySelectorAll('.event-card');
@@ -228,9 +281,22 @@ function appendRegisterModal() {
 }
 
 window.openEventRegisterModal = function (eventId, titleEncoded) {
+    const title = decodeURIComponent(titleEncoded || '');
+
+    const nanotechnology =
+      "International Training Workshop on Nanotechnology Applications in Modern Sciences";
+
+    if (
+      title === nanotechnology ||
+      "International Training Workshop on Nanotechnology Applications in Modern Sciences"
+    ) {
+      window.open("https://forms.gle/qzCEzxVpErbyCfsU8", "_blank");
+      return;
+    }
+    
     const modal = document.getElementById('eventRegisterModal');
     document.getElementById('eventIdField').value = eventId;
-    document.getElementById('eventRegisterTitle').textContent = `Event Registration - ${decodeURIComponent(titleEncoded || '')}`;
+    document.getElementById('eventRegisterTitle').textContent = `Event Registration - ${title}`;
     modal.style.display = 'block';
 };
 

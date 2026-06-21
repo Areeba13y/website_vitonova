@@ -1229,7 +1229,7 @@ body {
   flex: 1;
 }
 
-.event-content h3 {
+/* .event-content h3 {
   font-size: 2.2rem;
   margin-bottom: 15px;
   font-weight: 800;
@@ -1237,7 +1237,7 @@ body {
   font-family: 'Montserrat', sans-serif;
   position: relative;
   display: inline-block;
-}
+} */
 
 .event-content h3::after {
   content: '';
@@ -1250,13 +1250,13 @@ body {
   border-radius: 2px;
 }
 
-.event-content p {
+/* .event-content p {
   font-size: 1.1rem;
   opacity: 0.95;
   margin-bottom: 25px;
   line-height: 1.6;
   color: #e8f5e9;
-}
+} */
 
 .event-tags {
   display: flex;
