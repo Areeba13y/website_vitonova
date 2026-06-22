@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <title>Activities & Events - VitaNova International Alliance For Sciences</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/jpeg" href="logos/main_logo.jpeg">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="activities.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -83,11 +82,11 @@
             <div class="activities-grid">
                 <p style="text-align:center;color:#3f3f46;padding:20px;">Loading activities...</p>
             </div>
-            </div>
-            </section>
+        </div>
+        </section>
 
     <!-- ============================================= -->
-    <!-- PREVIOUS HIGHLIGHTS SECTION - ADDED BELOW EVENTS -->
+    <!-- PREVIOUS HIGHLIGHTS SECTION WITH SEE ALL -->
     <!-- ============================================= -->
     <section class="previous-highlights-section">
         <div class="container">
@@ -96,11 +95,30 @@
                 <p>Glimpses of our past successful events</p>
                 <div class="section-divider"></div>
             </div>
-            <div class="highlights-grid" id="highlightsContainer">
-                <div class="text-center" style="grid-column: 1/-1; padding: 40px;">
-                    <i class="fas fa-spinner fa-spin" style="font-size: 2rem; color: #2ecc71;"></i>
-                    <p style="margin-top: 10px; color: #666;">Loading highlights...</p>
+            <div class="highlights-wrapper">
+                <div class="highlights-grid" id="highlightsContainer">
+                    <div class="text-center" style="grid-column: 1/-1; padding: 40px;">
+                        <i class="fas fa-spinner fa-spin" style="font-size: 2rem; color: #2ecc71;"></i>
+                        <p style="margin-top: 10px; color: #666;">Loading highlights...</p>
+                    </div>
                 </div>
+                
+                <!-- See All Overlay (only visible when there are more than 3 highlights) -->
+                <div class="see-all-overlay" id="seeAllOverlay" style="display: none;">
+                    <button class="see-all-btn" id="seeAllBtn">
+                        <i class="fas fa-eye"></i>
+                        See All Highlights
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                </div>
+                </div>
+                
+                <!-- Collapse Button (shown when expanded) -->
+                <div class="collapse-wrapper" id="collapseWrapper" style="display: none;">
+                    <button class="collapse-btn" id="collapseBtn">
+                        <i class="fas fa-chevron-up"></i>
+                        Show Less
+                    </button>
             </div>
         </div>
     </section>

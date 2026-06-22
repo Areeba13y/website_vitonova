@@ -28,7 +28,6 @@ document.addEventListener("DOMContentLoaded", async () => {
           resolveEventImage(event.image_url || event.image),
         );
 
-        // Format dates
         const submission = formatDate(event.submission_deadline || "MOD");
         const eventDate = formatDate(event.event_date || "-");
 
@@ -77,15 +76,14 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 });
 
-// =============================================
+
 // FUNCTION TO LOAD PREVIOUS HIGHLIGHTS
-// =============================================
+
 async function loadHighlights() {
   const container = document.getElementById("highlightsContainer");
   if (!container) return;
 
   try {
-    // Get the API base URL
     const apiBase = window.VitaNovaApi?.baseURL || "https://backend.vnias.org";
     const response = await fetch(`${apiBase}/api/highlights`);
 
@@ -96,16 +94,22 @@ async function loadHighlights() {
     const data = await response.json();
 
     if (data.success && data.highlights && data.highlights.length > 0) {
-      // Show only first 3 highlights
-      const highlights = data.highlights.slice(0, 3);
+      const allHighlights = data.highlights;
+      const totalHighlights = allHighlights.length;
+      const initialShow = 3; // Show 3 initially
 
-      container.innerHTML = highlights
+      // Store all highlights data
+      window.highlightsData = allHighlights;
+      window.isExpanded = false;
+
+      // Build all cards but hide extras initially
+      let html = allHighlights
         .map((highlight, index) => {
           const title = escapeHtml(highlight.title);
           const imageUrl = highlight.image_url || "logos/main_logo.jpeg";
           const url = highlight.url || "";
+          const isHidden = index >= initialShow;
 
-          // If URL exists, make the card clickable
           const cardWrapper = url
             ? `<a href="${url}" target="_blank" class="highlight-card-link">`
             : "";
@@ -113,7 +117,8 @@ async function loadHighlights() {
 
           return `
                     ${cardWrapper}
-                    <div class="highlight-card animate__animated animate__fadeInUp" style="animation-delay: ${index * 0.15}s">
+                    <div class="highlight-card animate__animated animate__fadeInUp ${isHidden ? "hidden-card" : ""}" 
+                         style="animation-delay: ${(index % 3) * 0.15}s">
                         <div class="highlight-image">
                             <img src="${escapeHtml(imageUrl)}" alt="${title}" onerror="this.src='logos/main_logo.jpeg'">
                             ${url ? '<div class="highlight-overlay"><i class="fab fa-linkedin"></i> View Post</div>' : ""}
@@ -127,6 +132,38 @@ async function loadHighlights() {
                 `;
         })
         .join("");
+
+      container.innerHTML = html;
+
+      // Handle "See All" functionality
+      const seeAllOverlay = document.getElementById("seeAllOverlay");
+      const seeAllBtn = document.getElementById("seeAllBtn");
+      const collapseWrapper = document.getElementById("collapseWrapper");
+      const collapseBtn = document.getElementById("collapseBtn");
+
+      if (totalHighlights > initialShow) {
+        seeAllOverlay.style.display = "flex";
+        seeAllOverlay.classList.add("active");
+
+        // See All button click
+        seeAllBtn.onclick = function () {
+          expandHighlights();
+        };
+
+        // Collapse button click
+        collapseBtn.onclick = function () {
+          collapseHighlights();
+        };
+      } else {
+        seeAllOverlay.style.display = "none";
+        collapseWrapper.style.display = "none";
+        // Show all cards since total <= 3
+        document
+          .querySelectorAll(".highlight-card.hidden-card")
+          .forEach((card) => {
+            card.classList.remove("hidden-card");
+          });
+      }
     } else {
       container.innerHTML = `
                 <div style="grid-column: 1/-1; text-align: center; padding: 40px;">
@@ -134,6 +171,7 @@ async function loadHighlights() {
                     <p style="margin-top: 10px; color: #999;">No highlights available yet.</p>
                 </div>
             `;
+      document.getElementById("seeAllOverlay").style.display = "none";
     }
   } catch (error) {
     console.error("Error loading highlights:", error);
@@ -143,49 +181,95 @@ async function loadHighlights() {
                 <p style="margin-top: 10px; color: #666;">Unable to load highlights</p>
             </div>
         `;
+    document.getElementById("seeAllOverlay").style.display = "none";
   }
+}
+
+// Expand highlights to show all
+function expandHighlights() {
+  const container = document.getElementById("highlightsContainer");
+  const seeAllOverlay = document.getElementById("seeAllOverlay");
+  const collapseWrapper = document.getElementById("collapseWrapper");
+
+  // Show all hidden cards with animation
+  const hiddenCards = container.querySelectorAll(".highlight-card.hidden-card");
+  hiddenCards.forEach((card, index) => {
+    setTimeout(() => {
+      card.classList.remove("hidden-card");
+      card.style.animation = "fadeInUp 0.5s ease forwards";
+    }, index * 100);
+  });
+
+  // Hide overlay and show collapse button
+  seeAllOverlay.style.display = "none";
+  collapseWrapper.style.display = "block";
+
+  window.isExpanded = true;
+}
+
+// Collapse highlights back to 3
+function collapseHighlights() {
+  const container = document.getElementById("highlightsContainer");
+  const seeAllOverlay = document.getElementById("seeAllOverlay");
+  const collapseWrapper = document.getElementById("collapseWrapper");
+
+  // Hide all cards beyond the first 3
+  const allCards = container.querySelectorAll(".highlight-card");
+  allCards.forEach((card, index) => {
+    if (index >= 3) {
+      card.classList.add("hidden-card");
+      card.style.animation = "";
+    }
+  });
+
+  // Show overlay and hide collapse button
+  seeAllOverlay.style.display = "flex";
+  collapseWrapper.style.display = "none";
+
+  window.isExpanded = false;
+
+  // Scroll to highlights section
+  document.querySelector(".previous-highlights-section").scrollIntoView({
+    behavior: "smooth",
+    block: "start",
+  });
 }
 
 // Function to format date from YYYY-MM-DD to DD-MM-YYYY
 function formatDate(dateString) {
-    if (!dateString || dateString === '-' || dateString === 'MOD') {
-        return dateString || '-';
+  if (!dateString || dateString === "-" || dateString === "MOD") {
+    return dateString || "-";
+  }
+
+  try {
+    if (/^\d{2}-\d{2}-\d{4}$/.test(dateString)) {
+      return dateString;
     }
-    
-    try {
-        // If date is already in DD-MM-YYYY format, return as is
-        if (/^\d{2}-\d{2}-\d{4}$/.test(dateString)) {
-            return dateString;
-        }
-        
-        // Parse YYYY-MM-DD format
-        const parts = dateString.split('-');
-        if (parts.length === 3) {
-            const year = parts[0];
-            const month = parts[1];
-            const day = parts[2];
-            
-            // Validate if it's a valid date
-            if (year.length === 4 && month.length === 2 && day.length === 2) {
-                return `${day}-${month}-${year}`;
-            }
-        }
-        
-        // If format doesn't match, try creating a Date object
-        const date = new Date(dateString);
-        if (!isNaN(date.getTime())) {
-            const day = String(date.getDate()).padStart(2, '0');
-            const month = String(date.getMonth() + 1).padStart(2, '0');
-            const year = date.getFullYear();
-            return `${day}-${month}-${year}`;
-        }
-        
-        // Return original if all parsing fails
-        return dateString;
-    } catch (error) {
-        console.warn('Error formatting date:', dateString, error);
-        return dateString;
+
+    const parts = dateString.split("-");
+    if (parts.length === 3) {
+      const year = parts[0];
+      const month = parts[1];
+      const day = parts[2];
+
+      if (year.length === 4 && month.length === 2 && day.length === 2) {
+        return `${day}-${month}-${year}`;
+      }
     }
+
+    const date = new Date(dateString);
+    if (!isNaN(date.getTime())) {
+      const day = String(date.getDate()).padStart(2, "0");
+      const month = String(date.getMonth() + 1).padStart(2, "0");
+      const year = date.getFullYear();
+      return `${day}-${month}-${year}`;
+    }
+
+    return dateString;
+  } catch (error) {
+    console.warn("Error formatting date:", dateString, error);
+    return dateString;
+  }
 }
 
 function applyCardAnimations() {
