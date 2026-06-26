@@ -14,8 +14,23 @@ document.addEventListener("DOMContentLoaded", async () => {
     const events = data.events || [];
 
     if (!events.length) {
-      grid.innerHTML =
-        '<p style="text-align:center;color:#3f3f46;padding:20px;">No upcoming activities available right now.</p>';
+      grid.innerHTML = `
+        <div class="no-events-container">
+          <div class="no-events-icon">
+            <i class="fas fa-calendar-plus"></i>
+          </div>
+          <h3 class="no-events-title">No Upcoming Activities</h3>
+          <p class="no-events-text">We're currently preparing exciting new events for you.</p>
+          <p class="no-events-subtext">Check back soon for workshops, seminars, and conferences!</p>
+          <div class="no-events-decoration">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      `;
+
+      loadHighlights();
       return;
     }
 
@@ -63,8 +78,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     appendRegisterModal();
     applyCardAnimations();
-
-    // Load Previous Highlights after events
     loadHighlights();
   } catch (error) {
     console.error("Unable to load events:", error);
@@ -72,10 +85,21 @@ document.addEventListener("DOMContentLoaded", async () => {
       error?.data?.message ||
       error?.message ||
       "Unable to load activities from backend.";
-    grid.innerHTML = `<p style="text-align:center;color:#b42318;padding:20px;">${escapeHtml(reason)}</p>`;
+    grid.innerHTML = `
+      <div class="no-events-container">
+        <div class="no-events-icon" style="color: #f39c12;">
+          <i class="fas fa-exclamation-triangle"></i>
+        </div>
+        <h3 class="no-events-title">Unable to Load Events</h3>
+        <p class="no-events-text">${escapeHtml(reason)}</p>
+        <button class="no-events-retry-btn" onclick="location.reload()">
+          <i class="fas fa-sync-alt"></i> Retry
+        </button>
+      </div>
+    `;
+    loadHighlights();
   }
 });
-
 
 // FUNCTION TO LOAD PREVIOUS HIGHLIGHTS
 
@@ -96,13 +120,11 @@ async function loadHighlights() {
     if (data.success && data.highlights && data.highlights.length > 0) {
       const allHighlights = data.highlights;
       const totalHighlights = allHighlights.length;
-      const initialShow = 3; // Show 3 initially
+      const initialShow = 3;
 
-      // Store all highlights data
       window.highlightsData = allHighlights;
       window.isExpanded = false;
 
-      // Build all cards but hide extras initially
       let html = allHighlights
         .map((highlight, index) => {
           const title = escapeHtml(highlight.title);
@@ -135,7 +157,6 @@ async function loadHighlights() {
 
       container.innerHTML = html;
 
-      // Handle "See All" functionality
       const seeAllOverlay = document.getElementById("seeAllOverlay");
       const seeAllBtn = document.getElementById("seeAllBtn");
       const collapseWrapper = document.getElementById("collapseWrapper");
@@ -145,19 +166,16 @@ async function loadHighlights() {
         seeAllOverlay.style.display = "flex";
         seeAllOverlay.classList.add("active");
 
-        // See All button click
         seeAllBtn.onclick = function () {
           expandHighlights();
         };
 
-        // Collapse button click
         collapseBtn.onclick = function () {
           collapseHighlights();
         };
       } else {
         seeAllOverlay.style.display = "none";
         collapseWrapper.style.display = "none";
-        // Show all cards since total <= 3
         document
           .querySelectorAll(".highlight-card.hidden-card")
           .forEach((card) => {
@@ -171,7 +189,8 @@ async function loadHighlights() {
                     <p style="margin-top: 10px; color: #999;">No highlights available yet.</p>
                 </div>
             `;
-      document.getElementById("seeAllOverlay").style.display = "none";
+      const seeAllOverlay = document.getElementById("seeAllOverlay");
+      if (seeAllOverlay) seeAllOverlay.style.display = "none";
     }
   } catch (error) {
     console.error("Error loading highlights:", error);
@@ -181,7 +200,8 @@ async function loadHighlights() {
                 <p style="margin-top: 10px; color: #666;">Unable to load highlights</p>
             </div>
         `;
-    document.getElementById("seeAllOverlay").style.display = "none";
+    const seeAllOverlay = document.getElementById("seeAllOverlay");
+    if (seeAllOverlay) seeAllOverlay.style.display = "none";
   }
 }
 
@@ -191,7 +211,6 @@ function expandHighlights() {
   const seeAllOverlay = document.getElementById("seeAllOverlay");
   const collapseWrapper = document.getElementById("collapseWrapper");
 
-  // Show all hidden cards with animation
   const hiddenCards = container.querySelectorAll(".highlight-card.hidden-card");
   hiddenCards.forEach((card, index) => {
     setTimeout(() => {
@@ -200,10 +219,8 @@ function expandHighlights() {
     }, index * 100);
   });
 
-  // Hide overlay and show collapse button
   seeAllOverlay.style.display = "none";
   collapseWrapper.style.display = "block";
-
   window.isExpanded = true;
 }
 
@@ -213,7 +230,6 @@ function collapseHighlights() {
   const seeAllOverlay = document.getElementById("seeAllOverlay");
   const collapseWrapper = document.getElementById("collapseWrapper");
 
-  // Hide all cards beyond the first 3
   const allCards = container.querySelectorAll(".highlight-card");
   allCards.forEach((card, index) => {
     if (index >= 3) {
@@ -222,18 +238,22 @@ function collapseHighlights() {
     }
   });
 
-  // Show overlay and hide collapse button
   seeAllOverlay.style.display = "flex";
   collapseWrapper.style.display = "none";
-
   window.isExpanded = false;
 
-  // Scroll to highlights section
-  document.querySelector(".previous-highlights-section").scrollIntoView({
-    behavior: "smooth",
-    block: "start",
-  });
+  const highlightsSection = document.querySelector(
+    ".previous-highlights-section",
+  );
+  if (highlightsSection) {
+    highlightsSection.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }
 }
+
+// HELPER FUNCTIONS
 
 // Function to format date from YYYY-MM-DD to DD-MM-YYYY
 function formatDate(dateString) {
@@ -273,38 +293,40 @@ function formatDate(dateString) {
 }
 
 function applyCardAnimations() {
-    const cards = document.querySelectorAll('.event-card');
-    cards.forEach((card, index) => {
-        card.style.animationDelay = `${index * 0.1}s`;
-        card.classList.add('animate__animated', 'animate__fadeInUp');
-    });
+  const cards = document.querySelectorAll(".event-card");
+  cards.forEach((card, index) => {
+    card.style.animationDelay = `${index * 0.1}s`;
+    card.classList.add("animate__animated", "animate__fadeInUp");
+  });
 }
 
 function resolveEventImage(value) {
-    const raw = String(value || '').trim();
-    if (!raw) {
-        return 'logos/main_logo.jpeg';
-    }
+  const raw = String(value || "").trim();
+  if (!raw) {
+    return "logos/main_logo.jpeg";
+  }
 
-    if (/^https?:\/\//i.test(raw)) {
-        return raw;
-    }
-
-    if (raw.startsWith('/')) {
-        return `https://backend.vnias.org${raw}`;
-    }
-
-    if (raw.startsWith('storage/')) {
-        return `https://backend.vnias.org/${raw}`;
-    }
-
+  if (/^https?:\/\//i.test(raw)) {
     return raw;
+  }
+
+  if (raw.startsWith("/")) {
+    return `https://backend.vnias.org${raw}`;
+  }
+
+  if (raw.startsWith("storage/")) {
+    return `https://backend.vnias.org/${raw}`;
+  }
+
+  return raw;
 }
 
-function appendRegisterModal() {
-    if (document.getElementById('eventRegisterModal')) return;
+// EVENT REGISTER MODAL
 
-    const html = `
+function appendRegisterModal() {
+  if (document.getElementById("eventRegisterModal")) return;
+
+  const html = `
     <div id="eventRegisterModal" class="event-modal">
       <div class="event-modal-card">
         <div class="event-modal-head">
@@ -379,102 +401,102 @@ function appendRegisterModal() {
       </div>
     </div>`;
 
-    document.body.insertAdjacentHTML('beforeend', html);
+  document.body.insertAdjacentHTML("beforeend", html);
 
-    document.getElementById('eventRegisterForm').addEventListener('submit', async function (e) {
-        e.preventDefault();
-        const eventId = document.getElementById('eventIdField').value;
-        const formData = new FormData(this);
-        const submitBtn = this.querySelector('.event-btn-primary');
-        const originalBtnHtml = submitBtn.innerHTML;
+  document
+    .getElementById("eventRegisterForm")
+    .addEventListener("submit", async function (e) {
+      e.preventDefault();
+      const eventId = document.getElementById("eventIdField").value;
+      const formData = new FormData(this);
+      const submitBtn = this.querySelector(".event-btn-primary");
+      const originalBtnHtml = submitBtn.innerHTML;
 
-        const payload = {
-            email: formData.get('email'),
-            name: formData.get('name'),
-            contact: formData.get('contact'),
-            university_name: formData.get('university_name'),
-            semester_degree: formData.get('semester_degree'),
-            country: formData.get('country'),
-            interests: formData.get('interests'),
-            soft_skills: formData.getAll('soft_skills[]'),
-            interpersonal_skills: formData.getAll('interpersonal_skills[]'),
-            reason_to_join: formData.get('reason_to_join'),
-        };
+      const payload = {
+        email: formData.get("email"),
+        name: formData.get("name"),
+        contact: formData.get("contact"),
+        university_name: formData.get("university_name"),
+        semester_degree: formData.get("semester_degree"),
+        country: formData.get("country"),
+        interests: formData.get("interests"),
+        soft_skills: formData.getAll("soft_skills[]"),
+        interpersonal_skills: formData.getAll("interpersonal_skills[]"),
+        reason_to_join: formData.get("reason_to_join"),
+      };
 
-        if (!payload.soft_skills.length) {
-            window.VitaNovaUI?.toastError('Please select at least one soft skill.');
-            return;
+      if (!payload.soft_skills.length) {
+        window.VitaNovaUI?.toastError("Please select at least one soft skill.");
+        return;
+      }
+
+      if (!payload.interpersonal_skills.length) {
+        window.VitaNovaUI?.toastError(
+          "Please select at least one interpersonal skill.",
+        );
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.innerHTML =
+        '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+
+      try {
+        const res = await window.VitaNovaApi.postJson(
+          `/events/${eventId}/register`,
+          payload,
+        );
+        window.VitaNovaUI?.toastSuccess(
+          res.message || "Registration submitted successfully.",
+        );
+        this.reset();
+        closeEventRegisterModal();
+      } catch (error) {
+        let msg = error.message;
+        if (error.data && error.data.errors) {
+          msg = Object.values(error.data.errors).flat().join("\n");
         }
-
-        if (!payload.interpersonal_skills.length) {
-            window.VitaNovaUI?.toastError('Please select at least one interpersonal skill.');
-            return;
-        }
-
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
-
-        try {
-            const res = await window.VitaNovaApi.postJson(`/events/${eventId}/register`, payload);
-            window.VitaNovaUI?.toastSuccess(res.message || 'Registration submitted successfully.');
-            this.reset();
-            closeEventRegisterModal();
-        } catch (error) {
-            let msg = error.message;
-            if (error.data && error.data.errors) {
-                msg = Object.values(error.data.errors).flat().join('\n');
-            }
-            window.VitaNovaUI?.toastError(msg || 'Unable to submit registration.');
-        } finally {
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = originalBtnHtml;
-        }
+        window.VitaNovaUI?.toastError(msg || "Unable to submit registration.");
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnHtml;
+      }
     });
 
-    const modal = document.getElementById('eventRegisterModal');
-    modal.addEventListener('click', function (e) {
-        if (e.target === modal) {
-            closeEventRegisterModal();
-        }
-    });
+  const modal = document.getElementById("eventRegisterModal");
+  modal.addEventListener("click", function (e) {
+    if (e.target === modal) {
+      closeEventRegisterModal();
+    }
+  });
 
-    document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && modal.style.display === 'block') {
-            closeEventRegisterModal();
-        }
-    });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && modal.style.display === "block") {
+      closeEventRegisterModal();
+    }
+  });
 }
 
+// OPEN EVENT REGISTER MODAL
+
 window.openEventRegisterModal = function (eventId, titleEncoded) {
-    const title = decodeURIComponent(titleEncoded || '');
-
-    const nanotechnology =
-      "International Training Workshop on Nanotechnology Applications in Modern Sciences";
-
-    if (
-      title === nanotechnology ||
-      "International Training Workshop on Nanotechnology Applications in Modern Sciences"
-    ) {
-      window.open("https://forms.gle/qzCEzxVpErbyCfsU8", "_blank");
-      return;
-    }
-    
-    const modal = document.getElementById('eventRegisterModal');
-    document.getElementById('eventIdField').value = eventId;
-    document.getElementById('eventRegisterTitle').textContent = `Event Registration - ${title}`;
-    modal.style.display = 'block';
+  const modal = document.getElementById("eventRegisterModal");
+  document.getElementById("eventIdField").value = eventId;
+  document.getElementById("eventRegisterTitle").textContent =
+    `Event Registration - ${decodeURIComponent(titleEncoded || "")}`;
+  modal.style.display = "block";
 };
 
 window.closeEventRegisterModal = function () {
-    const modal = document.getElementById('eventRegisterModal');
-    if (modal) modal.style.display = 'none';
+  const modal = document.getElementById("eventRegisterModal");
+  if (modal) modal.style.display = "none";
 };
 
 function escapeHtml(value) {
-    return String(value || '')
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#039;');
+  return String(value || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 }
