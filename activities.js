@@ -47,6 +47,15 @@ document.addEventListener("DOMContentLoaded", async () => {
         const eventDate = formatDate(event.event_date || "-");
 
         const eventId = Number(event.id || 0);
+        const externalLink = String(event.external_link || "").trim();
+
+        const registerButton = externalLink
+          ? `<a href="${escapeHtml(externalLink)}" target="_blank" rel="noopener noreferrer" class="btn-event">
+                                Register Now <i class="fas fa-arrow-right"></i>
+                            </a>`
+          : `<button type="button" class="btn-event" onclick="openEventRegisterModal(${eventId}, '${encodeURIComponent(event.title || "")}')">
+                                Register Now <i class="fas fa-arrow-right"></i>
+                            </button>`;
 
         return `
                 <div class="event-card" data-event-id="${eventId}">
@@ -66,9 +75,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                     <i class="fas fa-clock"></i> Last date of Reg: ${submission}
                                 </span>
                             </div>
-                            <button type="button" class="btn-event" onclick="openEventRegisterModal(${eventId}, '${encodeURIComponent(event.title || "")}')">
-                                Register Now <i class="fas fa-arrow-right"></i>
-                            </button>
+                            ${registerButton}
                         </div>
                     </div>
                 </div>
